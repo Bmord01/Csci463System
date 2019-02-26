@@ -59,6 +59,19 @@
       <DependentUpon>MainPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MainPageSource.cs" />
+    <Compile Include="Interfaces\Sensor.cs" />
+    <Compile Include="Interfaces\Zone.cs" />
+    <Compile Include="Models\Alarm.cs" />
+    <Compile Include="Models\Building.cs" />
+    <Compile Include="Models\BuildingZone.cs" />
+    <Compile Include="Models\Elevator.cs" />
+    <Compile Include="Models\FireSensor.cs" />
+    <Compile Include="Models\Hallway.cs" />
+    <Compile Include="Models\Keypad.cs" />
+    <Compile Include="Models\LightSensor.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\Stairway.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
@@ -88,8 +101,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
