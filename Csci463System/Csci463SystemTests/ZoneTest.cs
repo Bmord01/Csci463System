@@ -3,6 +3,7 @@ using Csci463System.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Csci463System.Interfaces;
 
 namespace Csci463SystemTests
 {
@@ -13,9 +14,7 @@ namespace Csci463SystemTests
         public void TestCreator()
         {
 
-            Elevator elevator = new Elevator();
             Zone zone = new Zone(0);
-            Assert.AreNotEqual(elevator, null);
             Assert.AreNotEqual(zone, null);
             Assert.AreNotEqual(zone.zones, null);
             Assert.AreEqual(zone.zoneType, Zone.ZoneType.Building);
@@ -24,7 +23,7 @@ namespace Csci463SystemTests
         public void GetSensorTest()
         {
             Zone zone = new Zone(0);
-            List<Sensor> sensors = zone.GetSensors();
+            List<ISensor> sensors = zone.GetSensors();
             Assert.AreNotEqual(sensors, null);
             Assert.AreEqual(sensors, zone.sensors);
         }

@@ -33,7 +33,6 @@ namespace Csci463System.Services
                     break;
             }
             return sensor;
-            
         }
     }
 }
