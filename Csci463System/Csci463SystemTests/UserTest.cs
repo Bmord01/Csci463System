@@ -6,9 +6,10 @@ namespace Csci463SystemTests
     public class UserTest
     {
         [TestMethod]
-        public void TestCreators()
+        public void TestCreator()
         {
             User newUser =new User();
+            Assert.AreNotEqual(newUser, null);
         }
     }
 }
