@@ -65,6 +65,7 @@
     <Compile Include="Models\FireSensor.cs" />
     <Compile Include="Models\Keypad.cs" />
     <Compile Include="Models\LightSensor.cs" />
+    <Compile Include="Models\Permissions.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Zone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

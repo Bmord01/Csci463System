@@ -9,7 +9,7 @@ namespace Csci463System.Interfaces
     public interface IZone
     {
         void AddSensor(int type);
-        void AddInnerZone();
+        void AddInnerZone(int type);
         void AddKeypad();
         void LockDown();
         void Unlock();

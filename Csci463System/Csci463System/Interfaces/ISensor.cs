@@ -8,5 +8,7 @@ namespace Csci463System.Interfaces
 {
     public interface ISensor
     {
+        void checkStatus();
+        void checkConnection();
     }
 }

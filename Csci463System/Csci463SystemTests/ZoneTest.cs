@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Csci463System.Interfaces;
+using Csci463System.Services;
 
 namespace Csci463SystemTests
 {
@@ -43,6 +44,65 @@ namespace Csci463SystemTests
             Assert.AreNotEqual(keypads, null);
             Assert.AreEqual(keypads, zone.keypads);
         }
-        
+        [TestMethod]
+        public void AddSensorTest()
+        {
+            Zone zone = new Zone(0);
+            zone.AddSensor(0);
+            Assert.IsNotNull(zone.sensors[0]);
+            List<ISensor> sensors = zone.GetSensors();
+            Assert.AreEqual(sensors[0], zone.sensors[0]);
+        }
+        [TestMethod]
+        public void AddInnerZoneTest()
+        {
+            Zone zone = new Zone(0);
+            zone.AddInnerZone(1);
+            List<Zone> zones = zone.zones;
+            Assert.AreEqual(zones[0], zone.zones[0]);
+            Assert.IsNotNull(zone.zones[0]);
+            Assert.AreEqual(zone.zones[0].zoneType, Zone.ZoneType.BuildingZone);
+        }
+        [TestMethod]
+        public void AddKeypadTest()
+        {
+            Zone zone = new Zone(0);
+            zone.AddKeypad();
+            Keypad keypad = zone.keypads[0];
+            Assert.IsNotNull(zone.keypads[0]);
+            Assert.AreEqual(zone.keypads[0], keypad);
+        }
+        [TestMethod]
+        public void LockDownTest()
+        {
+            Zone zone = new Zone(0);
+            zone.LockDown();
+            Assert.AreEqual(zone.LockedDown, true);
+        }
+        [TestMethod]
+        public void UnlockTest()
+        {
+            Zone zone = new Zone(0);
+            zone.LockDown();
+            zone.Unlock();
+            Assert.AreEqual(zone.LockedDown, false);
+        }
+        [TestMethod]
+        public void LockDownElevatorTest()
+        {
+            Zone zone = new Zone(Zone.ZoneType.Elevator);
+            zone.LockDown();
+            Assert.AreEqual(zone.LockedDown, false);
+            Assert.AreEqual(zone.ElevatorActive, false);
+        }
+        [TestMethod]
+        public void UnlockElevatorTest()
+        {
+            Zone zone = new Zone(Zone.ZoneType.Elevator);
+            zone.LockDown();
+            zone.Unlock();
+            Assert.AreEqual(zone.LockedDown, false);
+            Assert.AreEqual(zone.ElevatorActive, true);
+        }
     }
 }

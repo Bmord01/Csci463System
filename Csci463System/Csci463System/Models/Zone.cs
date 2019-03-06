@@ -41,6 +41,20 @@ namespace Csci463System.Models
             }
         }
 
+        public void ChangedMannedState()
+        {
+            if (Manned)
+            {
+                Manned = false;
+                return;
+            }
+            else
+            {
+                Manned = true;
+                return;
+            }
+        }
+
         public List<ISensor> GetSensors()
         {
             return sensors;
@@ -63,17 +77,21 @@ namespace Csci463System.Models
             sensors.Add(new SensorService().CreateSensor((SensorService.SensorType)type));
         }
 
-        public void AddInnerZone()
+        public void AddInnerZone(int type)
         {
             if (zoneType == ZoneType.Elevator)
             {
                 return;
             }
-            zones.Add(new Zone(0));
+            zones.Add(new Zone((ZoneType)type));
         }
         public void AddKeypad()
         {
-
+            if(zoneType == ZoneType.Elevator)
+            {
+                return;
+            }
+            keypads.Add(new Keypad());
         }
 
         public void LockDown()
@@ -84,6 +102,10 @@ namespace Csci463System.Models
                 return;
             }
             LockedDown = true;
+            foreach (Zone z in zones)
+            {
+                z.LockDown();
+            }
         }
 
         public void Unlock()
@@ -94,6 +116,10 @@ namespace Csci463System.Models
                 return;
             }
             LockedDown = false;
+            foreach(Zone z in zones)
+            {
+                z.Unlock();
+            }
         }
 
         public void Activate()

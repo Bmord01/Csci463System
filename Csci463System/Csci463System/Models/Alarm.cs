@@ -8,11 +8,19 @@ namespace Csci463System.Models
 {
     public class Alarm
     {
-        enum AlarmType
+        public string Message { set => Message = value; get => Message; }
+
+        public enum AlarmType
         {
             Security,
             Fire,
             Evacuation
+        };
+        public enum AlarmSeverity
+        {
+            NoThreat,
+            MinorThreat,
+            MajorThreat
         };
     }
 }
