@@ -11,7 +11,7 @@ namespace Csci463SystemTests
     public class JsonServiceTest
     {
         [TestMethod]
-        public void TestSerialization()
+        public void TestSerializationUser()
         {
             User newUser = new User("bdr", "1234");
             JsonService js = new JsonService();
@@ -22,7 +22,7 @@ namespace Csci463SystemTests
             //Assert.AreEqual(newUser.Username, afterJsonDeserialize.Username);
         }
         [TestMethod]
-        public void TestSerialization2()
+        public void TestSerializationKeypad()
         {
             Keypad keypad = new Keypad();
             JsonService js = new JsonService();

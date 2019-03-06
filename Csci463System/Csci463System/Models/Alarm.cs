@@ -8,7 +8,7 @@ namespace Csci463System.Models
 {
     public class Alarm
     {
-        public string Message { set => Message = value; get => Message; }
+        public string Message { set ; get ; }
 
         public enum AlarmType
         {

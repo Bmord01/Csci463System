@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Csci463System.Models;
+using Csci463System.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ namespace Csci463System.Forms
 {
     public partial class LoginPage : Form
     {
+        public string loadedJson;
         public LoginPage()
         {
             InitializeComponent();
@@ -19,9 +22,16 @@ namespace Csci463System.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+
             MainPage form = new MainPage();
             form.Show();
             this.Hide();
+        }
+
+        private void LoginPage_Load(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }

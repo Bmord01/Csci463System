@@ -49,6 +49,7 @@
             this.Controls.Add(this.btnLogin);
             this.Name = "LoginPage";
             this.Text = "LoginPage";
+            this.Load += new System.EventHandler(this.LoginPage_Load);
             this.ResumeLayout(false);
 
         }

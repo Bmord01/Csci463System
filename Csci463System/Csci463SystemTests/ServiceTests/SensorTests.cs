@@ -17,7 +17,11 @@ namespace Csci463SystemTests
             SensorService ss = new SensorService();
             ISensor Sensor1 = ss.CreateSensor(0);
             ISensor Sensor2 = ss.CreateSensor(0);
+            ISensor Sensor3 = ss.CreateSensor(1);
+            ISensor Sensor4 = ss.CreateSensor(1);
             Assert.AreNotEqual(Sensor1.getSensorUID(), Sensor2.getSensorUID());
+            Assert.AreNotEqual(Sensor3.getSensorUID(), Sensor4.getSensorUID());
+            
         }
     }
 }
