@@ -16,5 +16,12 @@ namespace Csci463SystemTests
             keypad = new Keypad();
             Assert.AreNotEqual(keypad, null);
         }
+        [TestMethod]
+        public void TestUIDDifferent()
+        {
+            keypad = new Keypad();
+            Keypad keypad2 = new Keypad();
+            Assert.AreNotEqual(keypad.UID, keypad2.UID);
+        }
     }
 }

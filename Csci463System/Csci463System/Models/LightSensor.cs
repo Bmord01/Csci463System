@@ -27,7 +27,17 @@ namespace Csci463System.Models
             throw new NotImplementedException();
         }
 
-        public void checkStatus()
+        public bool checkStatus()
+        {
+            return Activated;
+        }
+
+        public int getSensorUID()
+        {
+            return UID;
+        }
+
+        public void triggerSensor()
         {
             throw new NotImplementedException();
         }

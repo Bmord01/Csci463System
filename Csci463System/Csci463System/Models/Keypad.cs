@@ -10,12 +10,19 @@ namespace Csci463System.Models
     {
         public static int uid = 1;
         public int UID;
-        private readonly string Passcode = "1234";
+        private readonly string Passcode;
         public bool Locked = true;
 
         public Keypad()
         {
             UID = uid++;
+            Passcode = "1234";
+        }
+        
+        public Keypad(string Passcode)
+        {
+            UID = uid++;
+            this.Passcode = Passcode;
         }
 
         public bool Unlock(string userCode)

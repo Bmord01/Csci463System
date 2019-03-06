@@ -23,15 +23,19 @@ namespace Csci463System.Models
         public bool Manned;
         public ZoneType zoneType;
         public bool LockedDown;
-        public string Uid;
+        public string ZoneName;
+        public static int uid = 1;
+        public int UID;
         public bool ElevatorActive = false;
         public List<ISensor> sensors;
         public List<Zone> zones;
         public List<Keypad> keypads;
 
-        public Zone(ZoneType inZoneType)
+        public Zone(ZoneType inZoneType,string ZoneName)
         {
+            UID = uid++;
             this.zoneType = inZoneType;
+            this.ZoneName = ZoneName;
             zones = new List<Zone>();
             sensors = new List<ISensor>();
             keypads = new List<Keypad>();
@@ -74,7 +78,7 @@ namespace Csci463System.Models
             {
                 return;
             }
-            sensors.Add(new SensorService().CreateSensor((SensorService.SensorType)type));
+            sensors.Add(new SensorService().CreateSensor(type));
         }
 
         public void AddInnerZone(int type)
@@ -83,7 +87,7 @@ namespace Csci463System.Models
             {
                 return;
             }
-            zones.Add(new Zone((ZoneType)type));
+            zones.Add(new Zone((ZoneType)type,"zone1"));
         }
         public void AddKeypad()
         {
