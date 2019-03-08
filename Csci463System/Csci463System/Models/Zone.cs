@@ -23,21 +23,43 @@ namespace Csci463System.Models
         public bool Manned;
         public ZoneType zoneType;
         public bool LockedDown;
-        public string Uid;
+        public string ZoneName;
+        public static int uid = 1;
+        public int UID;
         public bool ElevatorActive = false;
         public List<ISensor> sensors;
         public List<Zone> zones;
         public List<Keypad> keypads;
 
-        public Zone(ZoneType inZoneType)
+        public Zone()
         {
-            this.zoneType = inZoneType;
+
+        }
+        public Zone(int inZoneType,string ZoneName)
+        {
+            UID = uid++;
+            this.zoneType = (ZoneType) inZoneType;
+            this.ZoneName = ZoneName;
             zones = new List<Zone>();
             sensors = new List<ISensor>();
             keypads = new List<Keypad>();
             if(zoneType == ZoneType.Elevator)
             {
                 ElevatorActive = true;
+            }
+        }
+
+        public void ChangedMannedState()
+        {
+            if (Manned)
+            {
+                Manned = false;
+                return;
+            }
+            else
+            {
+                Manned = true;
+                return;
             }
         }
 
@@ -60,20 +82,24 @@ namespace Csci463System.Models
             {
                 return;
             }
-            sensors.Add(new SensorService().CreateSensor((SensorService.SensorType)type));
+            sensors.Add(new SensorService().CreateSensor(type));
         }
 
-        public void AddInnerZone()
+        public void AddInnerZone(int type)
         {
             if (zoneType == ZoneType.Elevator)
             {
                 return;
             }
-            zones.Add(new Zone(0));
+            zones.Add(new Zone(type,"zone1"));
         }
         public void AddKeypad()
         {
-
+            if(zoneType == ZoneType.Elevator)
+            {
+                return;
+            }
+            keypads.Add(new Keypad());
         }
 
         public void LockDown()
@@ -84,6 +110,10 @@ namespace Csci463System.Models
                 return;
             }
             LockedDown = true;
+            foreach (Zone z in zones)
+            {
+                z.LockDown();
+            }
         }
 
         public void Unlock()
@@ -94,6 +124,10 @@ namespace Csci463System.Models
                 return;
             }
             LockedDown = false;
+            foreach(Zone z in zones)
+            {
+                z.Unlock();
+            }
         }
 
         public void Activate()

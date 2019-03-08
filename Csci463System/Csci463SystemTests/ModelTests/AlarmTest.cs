@@ -7,14 +7,15 @@ using System.Text;
 namespace Csci463SystemTests
 {
     [TestClass]
-    public class KeypadTest
+    public class AlarmTest
     {
-        public Keypad keypad;
         [TestMethod]
         public void TestCreator()
         {
-            keypad = new Keypad();
-            Assert.AreNotEqual(keypad, null);
+            Alarm alarm = new Alarm();
+            Assert.IsNotNull(alarm);
+            alarm.Message = "Alarm Message";
+            Assert.AreEqual(alarm.Message, "Alarm Message");
         }
     }
 }

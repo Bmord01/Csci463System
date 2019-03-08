@@ -17,10 +17,11 @@ namespace Csci463System.Services
         };
         public int sensorType;
 
-        public ISensor CreateSensor(SensorType inType)
+        public ISensor CreateSensor(int inType)
         {
             ISensor sensor;
-            switch (inType)
+
+            switch ((SensorType) inType)
             {
                 case SensorType.SmokeSensor:
                     sensor = new FireSensor();
