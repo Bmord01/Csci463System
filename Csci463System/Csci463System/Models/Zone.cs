@@ -31,10 +31,14 @@ namespace Csci463System.Models
         public List<Zone> zones;
         public List<Keypad> keypads;
 
-        public Zone(ZoneType inZoneType,string ZoneName)
+        public Zone()
+        {
+
+        }
+        public Zone(int inZoneType,string ZoneName)
         {
             UID = uid++;
-            this.zoneType = inZoneType;
+            this.zoneType = (ZoneType) inZoneType;
             this.ZoneName = ZoneName;
             zones = new List<Zone>();
             sensors = new List<ISensor>();
@@ -87,7 +91,7 @@ namespace Csci463System.Models
             {
                 return;
             }
-            zones.Add(new Zone((ZoneType)type,"zone1"));
+            zones.Add(new Zone(type,"zone1"));
         }
         public void AddKeypad()
         {

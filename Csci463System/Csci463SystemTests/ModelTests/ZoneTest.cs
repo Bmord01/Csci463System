@@ -90,7 +90,7 @@ namespace Csci463SystemTests
         [TestMethod]
         public void LockDownElevatorTest()
         {
-            Zone zone = new Zone(Zone.ZoneType.Elevator, "room1");
+            Zone zone = new Zone(5, "room1");
             zone.LockDown();
             Assert.AreEqual(zone.LockedDown, false);
             Assert.AreEqual(zone.ElevatorActive, false);
@@ -98,7 +98,7 @@ namespace Csci463SystemTests
         [TestMethod]
         public void UnlockElevatorTest()
         {
-            Zone zone = new Zone(Zone.ZoneType.Elevator, "room1");
+            Zone zone = new Zone(5, "room1");
             zone.LockDown();
             zone.Unlock();
             Assert.AreEqual(zone.LockedDown, false);
