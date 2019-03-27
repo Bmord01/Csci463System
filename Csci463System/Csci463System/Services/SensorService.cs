@@ -13,7 +13,8 @@ namespace Csci463System.Services
         public enum SensorType
         {
             SmokeSensor,
-            LightSensor
+            LightSensor,
+            DoorSensor
         };
         public int sensorType;
 
@@ -28,6 +29,9 @@ namespace Csci463System.Services
                     break;
                 case SensorType.LightSensor:
                     sensor = new LightSensor();
+                    break;
+                case SensorType.DoorSensor:
+                    sensor = new DoorSensor();
                     break;
                 default:
                     sensor = null;

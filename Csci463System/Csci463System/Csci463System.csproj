@@ -72,6 +72,7 @@
     <Compile Include="Interfaces\ISensor.cs" />
     <Compile Include="Interfaces\IZone.cs" />
     <Compile Include="Models\Alarm.cs" />
+    <Compile Include="Models\DoorSensor.cs" />
     <Compile Include="Models\FireSensor.cs" />
     <Compile Include="Models\Keypad.cs" />
     <Compile Include="Models\LightSensor.cs" />

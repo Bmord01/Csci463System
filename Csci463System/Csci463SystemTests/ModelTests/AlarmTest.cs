@@ -14,8 +14,30 @@ namespace Csci463SystemTests
         {
             Alarm alarm = new Alarm();
             Assert.IsNotNull(alarm);
+            
+        }
+        [TestMethod]
+        public void ChangeMessageTest()
+        {
+            Alarm alarm = new Alarm();
             alarm.Message = "Alarm Message";
             Assert.AreEqual(alarm.Message, "Alarm Message");
+        }
+        [TestMethod]
+        public void UpgradeSeverityTest()
+        {
+            Alarm alarm = new Alarm();
+            alarm.UpgradeSeverity(3);
+            Assert.AreEqual(alarm.Severity, Alarm.AlarmType.Fire);
+        }
+        [TestMethod]
+        public void DowngradeSeverityTest()
+        {
+            Alarm alarm = new Alarm();
+            alarm.UpgradeSeverity(3);
+            Assert.AreEqual(alarm.Severity, Alarm.AlarmType.Fire);
+            alarm.DowngradeSeverity();
+            Assert.AreEqual(alarm.Severity, Alarm.AlarmType.None);
         }
     }
 }

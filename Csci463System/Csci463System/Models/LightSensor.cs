@@ -37,9 +37,18 @@ namespace Csci463System.Models
             return UID;
         }
 
-        public void triggerSensor()
+        public void SupressSensor()
         {
-            throw new NotImplementedException();
+            Activated = false;
+        }
+
+        public Alarm triggerSensor()
+        {
+            Alarm alarm = new Alarm();
+            alarm.Message = "Light Sensor Activated";
+            alarm.Severity = (Alarm.AlarmType.Light);
+            Activated = true;
+            return alarm;
         }
     }
 }

@@ -9,12 +9,13 @@ namespace Csci463System.Models
     public class Alarm
     {
         public string Message { set ; get ; }
-
+        public AlarmType Severity;
         public enum AlarmType
         {
+            None,
+            Light,
             Security,
-            Fire,
-            Evacuation
+            Fire
         };
         public enum AlarmSeverity
         {
@@ -22,5 +23,18 @@ namespace Csci463System.Models
             MinorThreat,
             MajorThreat
         };
+        public Alarm()
+        {
+            Message = "";
+            Severity = 0;
+        }
+        public void UpgradeSeverity(int Problem)
+        {
+            Severity = (AlarmType)Problem;
+        }
+        public void DowngradeSeverity()
+        {
+            Severity = AlarmType.None;
+        }
     }
 }
