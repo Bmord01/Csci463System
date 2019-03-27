@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Csci463System.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace Csci463System.Interfaces
     {
         bool checkStatus();
         void checkConnection();
-        void triggerSensor();
+        Alarm triggerSensor();
         int getSensorUID();
+        void SupressSensor();
     }
 }

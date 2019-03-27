@@ -15,6 +15,8 @@ namespace Csci463SystemTests
         {
             keypad = new Keypad();
             Assert.AreNotEqual(keypad, null);
+            Keypad k = new Keypad("123");
+            Assert.AreNotEqual(k, null);
         }
         [TestMethod]
         public void TestUIDDifferent()
@@ -22,6 +24,15 @@ namespace Csci463SystemTests
             keypad = new Keypad();
             Keypad keypad2 = new Keypad();
             Assert.AreNotEqual(keypad.UID, keypad2.UID);
+        }
+        [TestMethod]
+        public void UnlockTest()
+        {
+            keypad = new Keypad("123");
+            bool unlock = keypad.Unlock("123");
+            Assert.IsTrue(unlock);
+            unlock = keypad.Unlock("AFDSAFS");
+            Assert.IsFalse(unlock);
         }
     }
 }
