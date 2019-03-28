@@ -1,6 +1,6 @@
 ﻿namespace Csci463System
 {
-    partial class Form1
+    partial class MainPage
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "Main Form";
+            this.Name = "MainPage";
+            this.Text = "Security System";
             this.ResumeLayout(false);
 
         }
