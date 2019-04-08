@@ -27,7 +27,9 @@ namespace Csci463System.Models
         public static int uid = 1;
         public int UID;
         public bool ElevatorActive = false;
-        public List<ISensor> sensors;
+        public List<FireSensor> FSensors;
+        public List<LightSensor> LSensors;
+        public List<DoorSensor> DSensors;
         public List<Zone> zones;
         public List<Keypad> keypads;
 
@@ -41,7 +43,9 @@ namespace Csci463System.Models
             this.zoneType = (ZoneType) inZoneType;
             this.ZoneName = ZoneName;
             zones = new List<Zone>();
-            sensors = new List<ISensor>();
+            LSensors = new List<LightSensor>();
+            FSensors = new List<FireSensor>();
+            DSensors = new List<DoorSensor>();
             keypads = new List<Keypad>();
             if(zoneType == ZoneType.Elevator)
             {
@@ -63,10 +67,6 @@ namespace Csci463System.Models
             }
         }
 
-        public List<ISensor> GetSensors()
-        {
-            return sensors;
-        }
         public List<Zone> GetZones()
         {
             return zones;
@@ -82,7 +82,21 @@ namespace Csci463System.Models
             {
                 return;
             }
-            sensors.Add(new SensorService().CreateSensor(type));
+            switch (type)
+            {
+                case 0:
+                    FSensors.Add((FireSensor)new SensorService().CreateSensor(type));
+                    break;
+                case 1:
+                    LSensors.Add((LightSensor)new SensorService().CreateSensor(type));
+                    break;
+                case 2:
+                    DSensors.Add((DoorSensor)new SensorService().CreateSensor(type));
+                    break;
+                default:
+                    break;
+            }
+            
         }
 
         public void AddInnerZone(int type)

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Csci463System.Models;
+using Csci463System.Services;
 
 namespace Csci463System.Forms
 {
@@ -40,7 +42,7 @@ namespace Csci463System.Forms
 
         private void DriverScreen_Load(object sender, EventArgs e)
         {
-
+            createEnvironment();            
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -50,7 +52,7 @@ namespace Csci463System.Forms
         
         private void createEnvironment()
         {
-            Environment env = new Environment("Default Building");
+            EnvironmentC env = new EnvironmentC("Default Building");
             env.building.AddKeypad();
             env.building.AddKeypad();
             env.building.AddSensor(2);
@@ -169,6 +171,9 @@ namespace Csci463System.Forms
             zone3Zones.ElementAt(1).AddSensor(1);
             zone3Zones.ElementAt(2).AddSensor(0);
             zone3Zones.ElementAt(2).AddSensor(1);
+
+            SaveEnvironmentService ses = new SaveEnvironmentService();
+            ses.SaveEnvironmentToFile(env, "Environment1.txt");
         }
     }
 }
