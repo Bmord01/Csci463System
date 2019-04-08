@@ -136,17 +136,17 @@ namespace Csci463System.Forms
             zone2MeetingRooms.ElementAt(2).AddKeypad();
             zone2MeetingRooms.ElementAt(3).AddKeypad();
             zone2MeetingRooms.ElementAt(0).AddSensor(2);
-            zone2MeetingRooms.ElementAt(0).AddSensor(2);
-            zone2MeetingRooms.ElementAt(0).AddSensor(2);
-            zone2MeetingRooms.ElementAt(0).AddSensor(2);
+            zone2MeetingRooms.ElementAt(1).AddSensor(2);
+            zone2MeetingRooms.ElementAt(2).AddSensor(2);
+            zone2MeetingRooms.ElementAt(3).AddSensor(2);
             zone2MeetingRooms.ElementAt(0).AddSensor(0);
-            zone2MeetingRooms.ElementAt(0).AddSensor(0);
-            zone2MeetingRooms.ElementAt(0).AddSensor(0);
-            zone2MeetingRooms.ElementAt(0).AddSensor(0);
+            zone2MeetingRooms.ElementAt(1).AddSensor(0);
+            zone2MeetingRooms.ElementAt(2).AddSensor(0);
+            zone2MeetingRooms.ElementAt(3).AddSensor(0);
             zone2MeetingRooms.ElementAt(0).AddSensor(1);
-            zone2MeetingRooms.ElementAt(0).AddSensor(1);
-            zone2MeetingRooms.ElementAt(0).AddSensor(1);
-            zone2MeetingRooms.ElementAt(0).AddSensor(1);
+            zone2MeetingRooms.ElementAt(1).AddSensor(1);
+            zone2MeetingRooms.ElementAt(2).AddSensor(1);
+            zone2MeetingRooms.ElementAt(3).AddSensor(1);
 
             //zone 3
             zones.ElementAt(2).AddInnerZone(4); //stairs
