@@ -17,7 +17,8 @@ namespace Csci463System.Models
             Room,
             Hallway,
             Stairway,
-            Elevator
+            Elevator,
+            Floor
         };
 
         public bool Manned;
