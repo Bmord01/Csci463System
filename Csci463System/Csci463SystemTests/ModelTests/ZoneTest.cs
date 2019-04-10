@@ -21,14 +21,6 @@ namespace Csci463SystemTests
             Assert.AreEqual(zone.zoneType, Zone.ZoneType.Building);
         }
         [TestMethod]
-        public void GetSensorTest()
-        {
-            Zone zone = new Zone(0,"room1");
-            List<ISensor> sensors = zone.GetSensors();
-            Assert.AreNotEqual(sensors, null);
-            Assert.AreEqual(sensors, zone.sensors);
-        }
-        [TestMethod]
         public void GetZonesTest()
         {
             Zone zone = new Zone(0,"room1");
@@ -43,15 +35,6 @@ namespace Csci463SystemTests
             List<Keypad> keypads = zone.GetKeypads();
             Assert.AreNotEqual(keypads, null);
             Assert.AreEqual(keypads, zone.keypads);
-        }
-        [TestMethod]
-        public void AddSensorTest()
-        {
-            Zone zone = new Zone(0, "room1");
-            zone.AddSensor(0);
-            Assert.IsNotNull(zone.sensors[0]);
-            List<ISensor> sensors = zone.GetSensors();
-            Assert.AreEqual(sensors[0], zone.sensors[0]);
         }
         [TestMethod]
         public void AddInnerZoneTest()

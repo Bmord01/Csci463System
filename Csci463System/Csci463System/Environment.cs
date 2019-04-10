@@ -8,32 +8,19 @@ using System.Threading.Tasks;
 
 namespace Csci463System
 {
-    public class Environment
+    public class EnvironmentC
     {
         public Zone building;
         public List<User> users;
-        public Environment(string BuildingName)
+        public EnvironmentC(string BuildingName)
         {
             building = new Zone(0, BuildingName);
             users = new List<User>();
         }
-        public Environment()
+        public EnvironmentC()
         {
             building = new Zone();
             users = new List<User>();
-        }
-        public void SaveEnvironment(string inEnv)
-        {
-            
-            SaveEnvironmentService ses = new SaveEnvironmentService();
-            ses.SaveEnvironmentToFile(this, (inEnv + ".txt"));
-        }
-        public void LoadEnvironment(string inEnv)
-        {
-            LoadEnvironmentService les = new LoadEnvironmentService();
-            JsonService js = new JsonService();
-            building = js.Deserialize<Environment>(les.LoadEnvironmentOjbect(inEnv + ".txt")).building;
-            users = js.Deserialize<Environment>(les.LoadEnvironmentOjbect(inEnv + ".txt")).users;
         }
     }
 }
