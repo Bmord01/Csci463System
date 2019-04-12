@@ -53,6 +53,7 @@ namespace Csci463System.Forms
         private void createEnvironment()
         {
             User supervisor = new User("Supervisor", "1234");
+            supervisor.MakeSupervisor();
             User generic = new User("Generic", "1234");
 
 
