@@ -46,19 +46,19 @@ namespace Csci463SystemTests.ModelTests
             Assert.AreNotEqual(ds.getSensorUID(), ds2.getSensorUID());
         }
         [TestMethod]
-        public void TriggerSensorTest()
+        public void ActivateTest()
         {
             LightSensor ls = new LightSensor();
             FireSensor fs = new FireSensor();
             DoorSensor ds = new DoorSensor();
 
-            Alarm lsA = ls.triggerSensor();
-            Alarm fsA = fs.triggerSensor();
-            Alarm dsA = ds.triggerSensor();
+            ls.Activate();
+            fs.Activate();
+            ds.Activate();
 
-            Assert.IsNotNull(lsA);
-            Assert.IsNotNull(fsA);
-            Assert.IsNotNull(dsA);
+            Assert.IsNotNull(ls.alarm);
+            Assert.IsNotNull(fs.alarm);
+            Assert.IsNotNull(ds.alarm);
 
             bool lsStatus = ls.checkStatus();
             bool fsStatus = fs.checkStatus();
@@ -67,6 +67,38 @@ namespace Csci463SystemTests.ModelTests
             Assert.IsTrue(lsStatus);
             Assert.IsTrue(fsStatus);
             Assert.IsTrue(dsStatus);
+        }
+        [TestMethod]
+        public void DeactivateTest()
+        {
+            LightSensor ls = new LightSensor();
+            FireSensor fs = new FireSensor();
+            DoorSensor ds = new DoorSensor();
+
+            ls.Activate();
+            fs.Activate();
+            ds.Activate();
+
+            Assert.IsNotNull(ls.alarm);
+            Assert.IsNotNull(fs.alarm);
+            Assert.IsNotNull(ds.alarm);
+
+            bool lsStatus = ls.checkStatus();
+            bool fsStatus = fs.checkStatus();
+            bool dsStatus = ds.checkStatus();
+
+            Assert.IsTrue(lsStatus);
+            Assert.IsTrue(fsStatus);
+            Assert.IsTrue(dsStatus);
+
+            ls.Deactivate();
+            fs.Deactivate();
+            ds.Deactivate();
+
+            Assert.IsNull(ls.alarm);
+            Assert.IsNull(fs.alarm);
+            Assert.IsNull(ds.alarm);
+
         }
         [TestMethod]
         public void SupressSensorTest()
