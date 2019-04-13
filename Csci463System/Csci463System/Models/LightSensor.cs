@@ -12,10 +12,17 @@ namespace Csci463System.Models
         public static int uid = 1;
         public int UID;
         public bool Activated;
+        public Alarm alarm;
         public LightSensor()
         {
             Activated = false;
             UID = uid++;
+        }
+
+        public void Activate()
+        {
+            alarm = triggerSensor();
+            Activated = true;
         }
 
         public void checkConnection()
@@ -32,6 +39,12 @@ namespace Csci463System.Models
             return Activated;
         }
 
+        public void Deactivate()
+        {
+            alarm = null;
+            Activated = false;
+        }
+
         public int getSensorUID()
         {
             return UID;
@@ -44,11 +57,12 @@ namespace Csci463System.Models
 
         public Alarm triggerSensor()
         {
-            Alarm alarm = new Alarm();
-            alarm.Message = "Light Sensor Activated";
-            alarm.Severity = (Alarm.AlarmType.Light);
-            Activated = true;
-            return alarm;
+            Alarm a = new Alarm
+            {
+                Message = "Light Sensor Activated",
+                Severity = (Alarm.AlarmType.Light)
+            };
+            return a;
         }
     }
 }

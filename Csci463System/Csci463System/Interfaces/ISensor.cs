@@ -14,5 +14,7 @@ namespace Csci463System.Interfaces
         Alarm triggerSensor();
         int getSensorUID();
         void SupressSensor();
+        void Activate();
+        void Deactivate();
     }
 }

@@ -12,6 +12,8 @@ namespace Csci463System.Models
         public bool Activated;
         private static int uid = 1;
         public int UID;
+        public Alarm alarm;
+
         public FireSensor()
         {
             UID = uid++;
@@ -33,11 +35,12 @@ namespace Csci463System.Models
 
         public Alarm triggerSensor()
         {
-            Alarm alarm = new Alarm();
-            alarm.Message = "Fire Sensor Activated";
-            alarm.Severity = (Alarm.AlarmType)1;
-            Activated = true;
-            return alarm;
+            Alarm a = new Alarm
+            {
+                Message = "Fire Sensor Activated",
+                Severity = (Alarm.AlarmType)1
+            };
+            return a;
         }
 
         public int getSensorUID()
@@ -47,6 +50,18 @@ namespace Csci463System.Models
 
         public void SupressSensor()
         {
+            Activated = false;
+        }
+
+        public void Activate()
+        {
+            alarm = triggerSensor();
+            Activated = true;
+        }
+
+        public void Deactivate()
+        {
+            alarm = null;
             Activated = false;
         }
     }
