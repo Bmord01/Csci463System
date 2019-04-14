@@ -21,7 +21,7 @@ namespace Csci463System.Forms
 
         private void environment1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoginPage form = new LoginPage("Environment1");
+            Form form = new MainPage();
             form.Show();
             this.Hide();
         }
