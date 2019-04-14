@@ -57,6 +57,10 @@ namespace Csci463System
             treeView.Nodes[0].Nodes[2].Nodes.Add("Sensors");
             treeView.Nodes[0].Nodes[2].Nodes.Add("Cameras");
 
+            treeView.Nodes[0].Nodes[3].Nodes.Add("Doors");
+            treeView.Nodes[0].Nodes[3].Nodes.Add("Sensors");
+            treeView.Nodes[0].Nodes[3].Nodes.Add("Cameras");
+
 
             // -------------------------------------
 
