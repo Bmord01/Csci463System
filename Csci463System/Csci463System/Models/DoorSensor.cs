@@ -43,10 +43,6 @@ namespace Csci463System.Models
             };
             return a;
         }
-        public void SupressSensor()
-        {
-            Activated = false;
-        }
 
         public void Activate()
         {

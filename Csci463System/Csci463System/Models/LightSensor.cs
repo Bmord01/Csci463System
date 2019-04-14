@@ -50,11 +50,6 @@ namespace Csci463System.Models
             return UID;
         }
 
-        public void SupressSensor()
-        {
-            Activated = false;
-        }
-
         public Alarm triggerSensor()
         {
             Alarm a = new Alarm
