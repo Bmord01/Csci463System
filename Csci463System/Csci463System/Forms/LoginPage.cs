@@ -14,7 +14,7 @@ namespace Csci463System.Forms
 {
     public partial class LoginPage : Form
     {
-        public Environment env;
+        public EnvironmentC env;
         public string inEnv;
         public LoginPage(string Env)
         {
@@ -66,8 +66,10 @@ namespace Csci463System.Forms
              * function
              * */
             JsonService js = new JsonService();
-            env = new Environment();
-            env.LoadEnvironment(inEnv);
+            LoadEnvironmentService les = new LoadEnvironmentService();
+            env = new EnvironmentC();
+            string json = les.LoadEnvironmentOjbect(inEnv +".txt");
+            env = js.Deserialize<EnvironmentC>(json);
         }
 
         private void lblWelcomeMsg_Click(object sender, EventArgs e)
