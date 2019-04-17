@@ -33,65 +33,123 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lblWelcomeMsg = new System.Windows.Forms.Label();
+            this.lnklblForgotPwd = new System.Windows.Forms.LinkLabel();
+            this.grpControls = new System.Windows.Forms.GroupBox();
+            this.grpControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(9, 79);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLogin.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogin.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Location = new System.Drawing.Point(11, 130);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(85, 28);
+            this.btnLogin.Size = new System.Drawing.Size(306, 33);
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(9, 9);
+            this.lblUsername.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(8, 19);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(73, 17);
+            this.lblUsername.Size = new System.Drawing.Size(75, 17);
             this.lblUsername.TabIndex = 1;
-            this.lblUsername.Text = "Username";
+            this.lblUsername.Text = "Username:";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(9, 44);
+            this.lblPassword.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(8, 76);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(69, 17);
+            this.lblPassword.Size = new System.Drawing.Size(74, 17);
             this.lblPassword.TabIndex = 2;
-            this.lblPassword.Text = "Password";
+            this.lblPassword.Text = "Password:";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(88, 6);
+            this.txtUsername.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsername.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Location = new System.Drawing.Point(85, 18);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(100, 22);
+            this.txtUsername.Size = new System.Drawing.Size(232, 25);
             this.txtUsername.TabIndex = 3;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(88, 41);
+            this.txtPassword.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassword.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(85, 75);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(100, 22);
+            this.txtPassword.Size = new System.Drawing.Size(232, 25);
             this.txtPassword.TabIndex = 4;
+            // 
+            // lblWelcomeMsg
+            // 
+            this.lblWelcomeMsg.AutoSize = true;
+            this.lblWelcomeMsg.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcomeMsg.Location = new System.Drawing.Point(12, 42);
+            this.lblWelcomeMsg.Name = "lblWelcomeMsg";
+            this.lblWelcomeMsg.Size = new System.Drawing.Size(575, 17);
+            this.lblWelcomeMsg.TabIndex = 5;
+            this.lblWelcomeMsg.Text = "Welcome to the Fire Alarm Monitoring System!  To monitor the system, you must log" +
+    "in first.";
+            this.lblWelcomeMsg.Click += new System.EventHandler(this.lblWelcomeMsg_Click);
+            // 
+            // lnklblForgotPwd
+            // 
+            this.lnklblForgotPwd.AutoSize = true;
+            this.lnklblForgotPwd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lnklblForgotPwd.Location = new System.Drawing.Point(122, 165);
+            this.lnklblForgotPwd.Name = "lnklblForgotPwd";
+            this.lnklblForgotPwd.Size = new System.Drawing.Size(92, 13);
+            this.lnklblForgotPwd.TabIndex = 6;
+            this.lnklblForgotPwd.TabStop = true;
+            this.lnklblForgotPwd.Text = "Forgot Password?";
+            // 
+            // grpControls
+            // 
+            this.grpControls.Controls.Add(this.lnklblForgotPwd);
+            this.grpControls.Controls.Add(this.txtPassword);
+            this.grpControls.Controls.Add(this.txtUsername);
+            this.grpControls.Controls.Add(this.lblPassword);
+            this.grpControls.Controls.Add(this.lblUsername);
+            this.grpControls.Controls.Add(this.btnLogin);
+            this.grpControls.Location = new System.Drawing.Point(126, 97);
+            this.grpControls.Name = "grpControls";
+            this.grpControls.Size = new System.Drawing.Size(330, 199);
+            this.grpControls.TabIndex = 7;
+            this.grpControls.TabStop = false;
             // 
             // LoginPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.btnLogin);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.grpControls);
+            this.Controls.Add(this.lblWelcomeMsg);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LoginPage";
             this.Text = "LoginPage";
             this.Load += new System.EventHandler(this.LoginPage_Load);
+            this.grpControls.ResumeLayout(false);
+            this.grpControls.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -104,5 +162,8 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label lblWelcomeMsg;
+        private System.Windows.Forms.LinkLabel lnklblForgotPwd;
+        private System.Windows.Forms.GroupBox grpControls;
     }
 }

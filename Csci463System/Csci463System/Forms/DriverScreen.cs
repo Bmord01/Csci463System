@@ -35,7 +35,7 @@ namespace Csci463System.Forms
 
         private void environment3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoginPage form = new LoginPage("Environment3" );
+            LoginPage form = new LoginPage("Environment3");
             form.Show();
             this.Hide();
         }
@@ -48,8 +48,7 @@ namespace Csci463System.Forms
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
-        }
-        
+        }        
         private void createEnvironment()
         {
             User supervisor = new User("Supervisor", "1234");
@@ -291,6 +290,26 @@ namespace Csci463System.Forms
 
             SaveEnvironmentService ses = new SaveEnvironmentService();
             ses.SaveEnvironmentToFile(env, "Environment1.txt");
+        }
+        private void btnTest1_Click(object sender, EventArgs e)
+        {
+            LoginPage form = new LoginPage("Environment1");
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnTest2_Click(object sender, EventArgs e)
+        {
+            LoginPage form = new LoginPage("Environment2");
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnTest3_Click(object sender, EventArgs e)
+        {
+            LoginPage form = new LoginPage("Environment3");
+            form.Show();
+            this.Hide();
         }
     }
 }
