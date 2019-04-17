@@ -62,7 +62,9 @@ namespace Csci463System.Forms
             env.users.Add(generic);
 
             env.building.AddInnerZone(6);
+            env.building.zones[0].ZoneName = "Floor 1";
             env.building.AddInnerZone(6);
+            env.building.zones[1].ZoneName = "Floor 2";
             //List<Zone> floors = env.building.GetZones();
             env.building.AddKeypad();
             env.building.AddKeypad();
@@ -71,9 +73,11 @@ namespace Csci463System.Forms
 
             //adding elevator and stairs
             env.building.AddInnerZone(4);
+            env.building.zones[2].ZoneName = "Elevator";
             env.building.AddInnerZone(5);
+            env.building.zones[3].ZoneName = "Stairs";
 
-            List<Zone> floors = env.building.GetZones();
+            List<Zone> floors = new List<Zone>(env.building.GetZones());
             //Elements 2 and 3 are not floors, but the elevator and the stairs
 
             //elevator and stairs keypads and door sensors
@@ -95,37 +99,42 @@ namespace Csci463System.Forms
 
             //ground floor zone 1
             //list[0]
-            floors.ElementAt(0).AddInnerZone(1);
+            floors[0].AddInnerZone(1);
+            floors[0].zones[0].ZoneName = "Zone 1";
 
             //ground floor zone 2
             //list[1]
-            floors.ElementAt(0).AddInnerZone(1);
-
+            floors[0].AddInnerZone(1);
+            floors[0].zones[1].ZoneName = "Zone 2";
             //ground floor zone 3
             //list[2]
-            floors.ElementAt(0).AddInnerZone(1);
-
+            floors[0].AddInnerZone(1);
+            floors[0].zones[2].ZoneName = "Zone 3";
             //2nd floor zone 1
             //list[0]
-            floors.ElementAt(1).AddInnerZone(1);
-
+            floors[1].AddInnerZone(1);
+            floors[1].zones[0].ZoneName = "Zone 1";
             //2nd floor zone 2
             //list[1]
-            floors.ElementAt(1).AddInnerZone(1);
-
+            floors[1].AddInnerZone(1);
+            floors[1].zones[1].ZoneName = "Zone 2";
             //2nd floor zone 3
             //list[2]
-            floors.ElementAt(1).AddInnerZone(1);
-
+            floors[1].AddInnerZone(1);
+            floors[1].zones[2].ZoneName = "Zone 3";
             //Begin first floor
             //*************************************************
             List<Zone> zones = floors.ElementAt(0).GetZones();
 
             //zone 1
             zones.ElementAt(0).AddInnerZone(2);
+            zones[0].zones[0].ZoneName = "Room 1";
             zones.ElementAt(0).AddInnerZone(2);
+            zones[0].zones[1].ZoneName = "Room 2";
             zones.ElementAt(0).AddInnerZone(2); //room with locked door
+            zones[0].zones[2].ZoneName = "Room 3";
             zones.ElementAt(0).AddInnerZone(2); //main room
+            zones[0].zones[3].ZoneName = "Room 4";
             List<Zone> zone1Zones = zones.ElementAt(0).GetZones();  //zones of zone 1
             //keypad and door for locked room
             zone1Zones.ElementAt(2).AddKeypad();
@@ -156,8 +165,11 @@ namespace Csci463System.Forms
             zones.ElementAt(1).AddSensor(2);
 
             zones.ElementAt(1).AddInnerZone(3); //south hallway
+            zones[1].zones[0].ZoneName = "Hallway 1";
             zones.ElementAt(1).AddInnerZone(3); //north hallway
+            zones[1].zones[1].ZoneName = "Hallway 2";
             zones.ElementAt(1).AddInnerZone(2); //main room
+            zones[1].zones[2].ZoneName = "Main Room";
             List<Zone> zone2Zones = zones.ElementAt(1).GetZones();  //zones of zone 2
             //hallways and main rooms light and fire sensors
             zone2Zones.ElementAt(0).AddSensor(0);
@@ -167,11 +179,16 @@ namespace Csci463System.Forms
             zone2Zones.ElementAt(2).AddSensor(0);
             zone2Zones.ElementAt(2).AddSensor(1);
             zone2Zones.ElementAt(1).AddInnerZone(2);    //little closet on north hallway
+            zone2Zones[1].zones[0].ZoneName = "Closet";
             //little meeting rooms
             zone2Zones.ElementAt(2).AddInnerZone(2);
+            zone2Zones[2].zones[0].ZoneName = "Little Room 1";
             zone2Zones.ElementAt(2).AddInnerZone(2);
+            zone2Zones[2].zones[1].ZoneName = "Little Room 2";
             zone2Zones.ElementAt(2).AddInnerZone(2);
+            zone2Zones[2].zones[2].ZoneName = "Little Room 3";
             zone2Zones.ElementAt(2).AddInnerZone(2);
+            zone2Zones[2].zones[3].ZoneName = "Little Room 4";
             List<Zone> zone2MeetingRooms = zone2Zones.ElementAt(2).GetZones();  //little meeting rooms of zone 2
             List<Zone> zone2Closet = zone2Zones.ElementAt(1).GetZones();  //closet of zone 2
             //little closet's keypad and sensors
@@ -206,87 +223,98 @@ namespace Csci463System.Forms
 
             //Begin second floor
             //*******************************************
-            List<Zone> zonesF2 = floors.ElementAt(1).GetZones();
+            List<Zone> zones2F = floors.ElementAt(1).GetZones();
 
             //zone 1
-            zonesF2.ElementAt(0).AddInnerZone(2);
-            zonesF2.ElementAt(0).AddInnerZone(2);
-            zonesF2.ElementAt(0).AddInnerZone(2); //room with locked door
-            zonesF2.ElementAt(0).AddInnerZone(2); //main room
-            List<Zone> zone1ZonesF2 = zonesF2.ElementAt(0).GetZones();  //zones of zone 1
+            zones2F.ElementAt(0).AddInnerZone(2);
+            zones2F[0].zones[0].ZoneName = "Room 1";
+            zones2F.ElementAt(0).AddInnerZone(2);
+            zones2F[0].zones[1].ZoneName = "Room 2";
+            zones2F.ElementAt(0).AddInnerZone(2); //room with locked door
+            zones2F[0].zones[2].ZoneName = "Room 3";
+            zones2F.ElementAt(0).AddInnerZone(2); //main room
+            zones2F[0].zones[3].ZoneName = "Room 4";
+            List<Zone> zone1Zones2F = zones2F.ElementAt(0).GetZones();  //zones of zone 1
             //keypad and door for locked room
-            zone1ZonesF2.ElementAt(2).AddKeypad();
-            zone1ZonesF2.ElementAt(2).AddSensor(2);
+            zone1Zones2F.ElementAt(2).AddKeypad();
+            zone1Zones2F.ElementAt(2).AddSensor(2);
             //all the fire and light sensors
-            zone1ZonesF2.ElementAt(0).AddSensor(0);
-            zone1ZonesF2.ElementAt(0).AddSensor(1);
-            zone1ZonesF2.ElementAt(1).AddSensor(0);
-            zone1ZonesF2.ElementAt(1).AddSensor(1);
-            zone1ZonesF2.ElementAt(2).AddSensor(0);
-            zone1ZonesF2.ElementAt(2).AddSensor(1);
-            zone1ZonesF2.ElementAt(3).AddSensor(0);
-            zone1ZonesF2.ElementAt(3).AddSensor(1);
+            zone1Zones2F.ElementAt(0).AddSensor(0);
+            zone1Zones2F.ElementAt(0).AddSensor(1);
+            zone1Zones2F.ElementAt(1).AddSensor(0);
+            zone1Zones2F.ElementAt(1).AddSensor(1);
+            zone1Zones2F.ElementAt(2).AddSensor(0);
+            zone1Zones2F.ElementAt(2).AddSensor(1);
+            zone1Zones2F.ElementAt(3).AddSensor(0);
+            zone1Zones2F.ElementAt(3).AddSensor(1);
 
             //zone 2
             //the 6 doors into zone 2
-            zonesF2.ElementAt(1).AddKeypad();
-            zonesF2.ElementAt(1).AddKeypad();
-            zonesF2.ElementAt(1).AddKeypad();
-            zonesF2.ElementAt(1).AddKeypad();
-            zonesF2.ElementAt(1).AddKeypad();
-            zonesF2.ElementAt(1).AddKeypad();
-            zonesF2.ElementAt(1).AddSensor(2);
-            zonesF2.ElementAt(1).AddSensor(2);
-            zonesF2.ElementAt(1).AddSensor(2);
-            zonesF2.ElementAt(1).AddSensor(2);
-            zonesF2.ElementAt(1).AddSensor(2);
-            zonesF2.ElementAt(1).AddSensor(2);
+            zones2F.ElementAt(1).AddKeypad();
+            zones2F.ElementAt(1).AddKeypad();
+            zones2F.ElementAt(1).AddKeypad();
+            zones2F.ElementAt(1).AddKeypad();
+            zones2F.ElementAt(1).AddKeypad();
+            zones2F.ElementAt(1).AddKeypad();
+            zones2F.ElementAt(1).AddSensor(2);
+            zones2F.ElementAt(1).AddSensor(2);
+            zones2F.ElementAt(1).AddSensor(2);
+            zones2F.ElementAt(1).AddSensor(2);
+            zones2F.ElementAt(1).AddSensor(2);
+            zones2F.ElementAt(1).AddSensor(2);
 
-            zonesF2.ElementAt(1).AddInnerZone(3); //south hallway
-            zonesF2.ElementAt(1).AddInnerZone(3); //north hallway
-            zonesF2.ElementAt(1).AddInnerZone(2); //main room
-            List<Zone> zone2ZonesF2 = zones.ElementAt(1).GetZones();  //zones of zone 2
+            zones2F.ElementAt(1).AddInnerZone(3); //south hallway
+            zones2F[1].zones[0].ZoneName = "Hallway 1";
+            zones2F.ElementAt(1).AddInnerZone(3); //north hallway
+            zones2F[1].zones[1].ZoneName = "Hallway 2";
+            zones2F.ElementAt(1).AddInnerZone(2); //main room
+            zones2F[1].zones[2].ZoneName = "Main Room";
+            List<Zone> zone2Zones2F = zones2F.ElementAt(1).GetZones();  //zones of zone 2
             //hallways and main rooms light and fire sensors
-            zone2ZonesF2.ElementAt(0).AddSensor(0);
-            zone2ZonesF2.ElementAt(0).AddSensor(1);
-            zone2ZonesF2.ElementAt(1).AddSensor(0);
-            zone2ZonesF2.ElementAt(1).AddSensor(1);
-            zone2ZonesF2.ElementAt(2).AddSensor(0);
-            zone2ZonesF2.ElementAt(2).AddSensor(1);
-            zone2ZonesF2.ElementAt(1).AddInnerZone(2);    //little closet on north hallway
+            zone2Zones2F.ElementAt(0).AddSensor(0);
+            zone2Zones2F.ElementAt(0).AddSensor(1);
+            zone2Zones2F.ElementAt(1).AddSensor(0);
+            zone2Zones2F.ElementAt(1).AddSensor(1);
+            zone2Zones2F.ElementAt(2).AddSensor(0);
+            zone2Zones2F.ElementAt(2).AddSensor(1);
+            zone2Zones2F.ElementAt(1).AddInnerZone(2);    //little closet on north hallway
+            zone2Zones2F[1].zones[0].ZoneName = "Closet";
             //little meeting rooms
-            zone2ZonesF2.ElementAt(2).AddInnerZone(2);
-            zone2ZonesF2.ElementAt(2).AddInnerZone(2);
-            zone2ZonesF2.ElementAt(2).AddInnerZone(2);
-            zone2ZonesF2.ElementAt(2).AddInnerZone(2);
-            List<Zone> zone2MeetingRoomsF2 = zone2Zones.ElementAt(2).GetZones();  //little meeting rooms of zone 2
-            List<Zone> zone2ClosetF2 = zone2Zones.ElementAt(1).GetZones();  //closet of zone 2
+            zone2Zones2F.ElementAt(2).AddInnerZone(2);
+            zone2Zones2F[2].zones[0].ZoneName = "Little Room 1";
+            zone2Zones2F.ElementAt(2).AddInnerZone(2);
+            zone2Zones2F[2].zones[1].ZoneName = "Little Room 2";
+            zone2Zones2F.ElementAt(2).AddInnerZone(2);
+            zone2Zones2F[2].zones[2].ZoneName = "Little Room 3";
+            zone2Zones2F.ElementAt(2).AddInnerZone(2);
+            zone2Zones2F[2].zones[3].ZoneName = "Little Room 4";
+            List<Zone> zone2MeetingRooms2F = zone2Zones.ElementAt(2).GetZones();  //little meeting rooms of zone 2
+            List<Zone> zone2Closet2F = zone2Zones.ElementAt(1).GetZones();  //closet of zone 2
             //little closet's keypad and sensors
-            zone2ClosetF2.ElementAt(0).AddKeypad();
-            zone2ClosetF2.ElementAt(0).AddSensor(2);
-            zone2ClosetF2.ElementAt(0).AddSensor(0);
-            zone2ClosetF2.ElementAt(0).AddSensor(1);
+            zone2Closet2F.ElementAt(0).AddKeypad();
+            zone2Closet2F.ElementAt(0).AddSensor(2);
+            zone2Closet2F.ElementAt(0).AddSensor(0);
+            zone2Closet2F.ElementAt(0).AddSensor(1);
             //meeting room's keypads and sensors
-            zone2MeetingRoomsF2.ElementAt(0).AddKeypad();
-            zone2MeetingRoomsF2.ElementAt(1).AddKeypad();
-            zone2MeetingRoomsF2.ElementAt(2).AddKeypad();
-            zone2MeetingRoomsF2.ElementAt(3).AddKeypad();
-            zone2MeetingRoomsF2.ElementAt(0).AddSensor(2);
-            zone2MeetingRoomsF2.ElementAt(1).AddSensor(2);
-            zone2MeetingRoomsF2.ElementAt(2).AddSensor(2);
-            zone2MeetingRoomsF2.ElementAt(3).AddSensor(2);
-            zone2MeetingRoomsF2.ElementAt(0).AddSensor(0);
-            zone2MeetingRoomsF2.ElementAt(1).AddSensor(0);
-            zone2MeetingRoomsF2.ElementAt(2).AddSensor(0);
-            zone2MeetingRoomsF2.ElementAt(3).AddSensor(0);
-            zone2MeetingRoomsF2.ElementAt(0).AddSensor(1);
-            zone2MeetingRoomsF2.ElementAt(1).AddSensor(1);
-            zone2MeetingRoomsF2.ElementAt(2).AddSensor(1);
-            zone2MeetingRoomsF2.ElementAt(3).AddSensor(1);
+            zone2MeetingRooms2F.ElementAt(0).AddKeypad();
+            zone2MeetingRooms2F.ElementAt(1).AddKeypad();
+            zone2MeetingRooms2F.ElementAt(2).AddKeypad();
+            zone2MeetingRooms2F.ElementAt(3).AddKeypad();
+            zone2MeetingRooms2F.ElementAt(0).AddSensor(2);
+            zone2MeetingRooms2F.ElementAt(1).AddSensor(2);
+            zone2MeetingRooms2F.ElementAt(2).AddSensor(2);
+            zone2MeetingRooms2F.ElementAt(3).AddSensor(2);
+            zone2MeetingRooms2F.ElementAt(0).AddSensor(0);
+            zone2MeetingRooms2F.ElementAt(1).AddSensor(0);
+            zone2MeetingRooms2F.ElementAt(2).AddSensor(0);
+            zone2MeetingRooms2F.ElementAt(3).AddSensor(0);
+            zone2MeetingRooms2F.ElementAt(0).AddSensor(1);
+            zone2MeetingRooms2F.ElementAt(1).AddSensor(1);
+            zone2MeetingRooms2F.ElementAt(2).AddSensor(1);
+            zone2MeetingRooms2F.ElementAt(3).AddSensor(1);
 
             //zone 3
-            zonesF2.ElementAt(2).AddInnerZone(3); //main room
-            List<Zone> zone3ZonesF2 = zonesF2.ElementAt(2).GetZones();
+            List<Zone> zone3Zones2F = zones2F.ElementAt(2).GetZones();
             //zone3ZonesF2.ElementAt(2).AddSensor(0);
             //zone3ZonesF2.ElementAt(2).AddSensor(1);
             //End second floor

@@ -26,7 +26,7 @@ namespace Csci463System.Models
         public bool LockedDown;
         public string ZoneName;
         public static int uid = 1;
-        public int UID;
+        public int UID { get; set; }
         public bool ElevatorActive = false;
         public List<FireSensor> FSensors;
         public List<LightSensor> LSensors;
@@ -106,7 +106,7 @@ namespace Csci463System.Models
             {
                 return;
             }
-            zones.Add(new Zone(type,"zone1"));
+            zones.Add(new Zone(type,("zone "+UID.ToString())));
         }
         public void AddKeypad()
         {
