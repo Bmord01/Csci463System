@@ -79,10 +79,6 @@ namespace Csci463System.Models
         
         public void AddSensor(int type)
         {
-            if (zoneType == ZoneType.Elevator)
-            {
-                return;
-            }
             switch (type)
             {
                 case 0:

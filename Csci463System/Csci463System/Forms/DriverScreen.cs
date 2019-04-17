@@ -87,8 +87,8 @@ namespace Csci463System.Forms
             floors.ElementAt(2).AddSensor(2);
             floors.ElementAt(3).AddKeypad();
             floors.ElementAt(3).AddKeypad();
-            floors.ElementAt(3).AddSensor(2);
-            floors.ElementAt(3).AddSensor(2);
+            floors[3].AddSensor(2);
+            floors[3].AddSensor(2);
             //fire and light sensors
             floors.ElementAt(2).AddSensor(0);
             floors.ElementAt(2).AddSensor(1);
@@ -288,8 +288,8 @@ namespace Csci463System.Forms
             zone2Zones2F[2].zones[2].ZoneName = "Little Room 3";
             zone2Zones2F.ElementAt(2).AddInnerZone(2);
             zone2Zones2F[2].zones[3].ZoneName = "Little Room 4";
-            List<Zone> zone2MeetingRooms2F = zone2Zones.ElementAt(2).GetZones();  //little meeting rooms of zone 2
-            List<Zone> zone2Closet2F = zone2Zones.ElementAt(1).GetZones();  //closet of zone 2
+            List<Zone> zone2MeetingRooms2F = zone2Zones2F.ElementAt(2).GetZones();  //little meeting rooms of zone 2
+            List<Zone> zone2Closet2F = zone2Zones2F.ElementAt(1).GetZones();  //closet of zone 2
             //little closet's keypad and sensors
             zone2Closet2F.ElementAt(0).AddKeypad();
             zone2Closet2F.ElementAt(0).AddSensor(2);

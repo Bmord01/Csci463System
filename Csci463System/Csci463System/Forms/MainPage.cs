@@ -1,4 +1,5 @@
-﻿using Csci463System.Models;
+﻿using Csci463System.Interfaces;
+using Csci463System.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,20 +29,39 @@ namespace Csci463System
 
         }
 
-        private void AddNodeToTree(List<Zone> inZ,TreeNode inNode)
+        private void AddKeypadNodToTree(List<Keypad> inK,TreeNode inNode)
+        {
+            foreach(Keypad k in inK)
+            {
+                inNode.Nodes.Add("Keypad " + k.UID);
+            }
+        }
+
+        private void AddSensorNodeToTree(List<ISensor> inIS,TreeNode inNode)
+        {
+            foreach(ISensor s in inIS)
+            {
+                inNode.Nodes.Add((s.GetSensorType() + s.getSensorUID().ToString()));
+            }
+        }
+
+        private void AddZoneNodeToTree(List<Zone> inZ,TreeNode inNode)
         {
             int i = 0;
             foreach(Zone z in inZ)
             {
                 inNode.Nodes.Add(z.ZoneName);
-                AddNodeToTree(z.zones, inNode.Nodes[i++]); 
+                AddZoneNodeToTree(z.zones, inNode.Nodes[i]);
+                AddSensorNodeToTree(z.GetAllSensors(),inNode.Nodes[i]);
+                AddKeypadNodToTree(z.keypads, inNode.Nodes[i]);
+                i++;
             }
         }
 
         private void MainPage_Load(object sender, EventArgs e)
         {
             treeView.Nodes.Add(env.building.ZoneName);
-            AddNodeToTree(env.building.zones,treeView.Nodes[0]);
+            AddZoneNodeToTree(env.building.zones,treeView.Nodes[0]);
             // Initializing Tree to view all the building systems.
             //treeView.Nodes.Add("Floor 1");
             //treeView.Nodes.Add("Floor 2");

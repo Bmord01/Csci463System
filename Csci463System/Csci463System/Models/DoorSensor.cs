@@ -66,5 +66,10 @@ namespace Csci463System.Models
         {
             return alarm;
         }
+
+        public string GetSensorType()
+        {
+            return "Door Sensor ";
+        }
     }
 }
