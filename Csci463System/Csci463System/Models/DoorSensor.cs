@@ -12,6 +12,8 @@ namespace Csci463System.Models
         public bool Activated;
         private static int uid = 1;
         public int UID;
+        public Alarm alarm;
+
 
         public DoorSensor()
         {
@@ -36,15 +38,33 @@ namespace Csci463System.Models
 
         public Alarm triggerSensor()
         {
-            Alarm alarm = new Alarm();
-            alarm.Message = "Fire Sensor Activated";
-            alarm.Severity = (Alarm.AlarmType.Security);
-            Activated = true;
-            return alarm;
+            Alarm a = new Alarm {
+                Message = "Fire Sensor Activated",
+                Severity = (Alarm.AlarmType.Security),
+            };
+            return a;
         }
-        public void SupressSensor()
+
+        public void Activate()
         {
+            alarm = triggerSensor();
+            Activated = true;
+        }
+
+        public void Deactivate()
+        {
+            alarm = null;
             Activated = false;
+        }
+
+        public bool GetActive()
+        {
+            return Activated;
+        }
+
+        public Alarm GetAlarm()
+        {
+            return alarm;
         }
     }
 }
