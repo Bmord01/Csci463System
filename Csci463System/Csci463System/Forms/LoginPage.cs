@@ -19,6 +19,11 @@ namespace Csci463System.Forms
         public LoginPage(string Env)
         {
             inEnv = Env;
+            JsonService js = new JsonService();
+            LoadEnvironmentService les = new LoadEnvironmentService();
+            env = new EnvironmentC();
+            string json = les.LoadEnvironmentOjbect(inEnv);
+            env = js.Deserialize<EnvironmentC>(json);
             InitializeComponent();
         }
 
@@ -31,7 +36,7 @@ namespace Csci463System.Forms
              * Username = user
              * Passwrod = 123
              * */
-            /*foreach(User u in env.users)
+            foreach(User u in env.users)
             {
                 if(u.Username == txtUsername.Text)
                 {
@@ -46,7 +51,7 @@ namespace Csci463System.Forms
             }
             MessageBox.Show("Incorrect Login Information");
             return;
-            */
+            
         }
 
         private void LoginPage_Load(object sender, EventArgs e)
@@ -55,21 +60,22 @@ namespace Csci463System.Forms
              * This code is where you would load an environment if you wanted more users involved that what
              * is in the current json file
             */
-            /*
-            User newUser = new User("user", "123");
-            Environment environment = new Environment("Building1");
-            environment.users.Add(newUser);
-            environment.SaveEnvironment(inEnv);
-            */
+            
+            //User newUser = new User("user", "123");
+            //EnvironmentC environment = new EnvironmentC("Building1");
+            //environment.users.Add(newUser);
+            //environment.SaveEnvironment(inEnv);
+            
             /*
              * This code loads any environment Specified in the LoadEnvironment("ENV")
              * function
              * */
-            JsonService js = new JsonService();
-            LoadEnvironmentService les = new LoadEnvironmentService();
-            env = new EnvironmentC();
-            string json = les.LoadEnvironmentOjbect(inEnv +".txt");
-            env = js.Deserialize<EnvironmentC>(json);
+            
+        }
+
+        private void lblWelcomeMsg_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

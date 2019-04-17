@@ -17,11 +17,12 @@ namespace Csci463System.Forms
         public DriverScreen()
         {
             InitializeComponent();
+            createEnvironment();
         }
 
         private void environment1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form form = new MainPage();
+            Form form = new LoginPage("Env.txt");
             form.Show();
             this.Hide();
         }
@@ -35,7 +36,7 @@ namespace Csci463System.Forms
 
         private void environment3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoginPage form = new LoginPage("Environment3" );
+            LoginPage form = new LoginPage("Environment3");
             form.Show();
             this.Hide();
         }
@@ -48,8 +49,7 @@ namespace Csci463System.Forms
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
-        }
-        
+        }        
         private void createEnvironment()
         {
             User supervisor = new User("Supervisor", "1234");
@@ -58,6 +58,9 @@ namespace Csci463System.Forms
 
 
             EnvironmentC env = new EnvironmentC("Default Building");
+            env.users.Add(supervisor);
+            env.users.Add(generic);
+
             env.building.AddInnerZone(6);
             env.building.AddInnerZone(6);
             //List<Zone> floors = env.building.GetZones();
@@ -196,8 +199,8 @@ namespace Csci463System.Forms
 
             //zone 3
             List<Zone> zone3Zones = zones.ElementAt(2).GetZones();
-            zone3Zones.ElementAt(2).AddSensor(0);
-            zone3Zones.ElementAt(2).AddSensor(1);
+            //zone3Zones.ElementAt(2).AddSensor(0);
+            //zone3Zones.ElementAt(2).AddSensor(1);
             //End first floor
             //************************************************
 
@@ -284,13 +287,33 @@ namespace Csci463System.Forms
             //zone 3
             zonesF2.ElementAt(2).AddInnerZone(3); //main room
             List<Zone> zone3ZonesF2 = zonesF2.ElementAt(2).GetZones();
-            zone3ZonesF2.ElementAt(2).AddSensor(0);
-            zone3ZonesF2.ElementAt(2).AddSensor(1);
+            //zone3ZonesF2.ElementAt(2).AddSensor(0);
+            //zone3ZonesF2.ElementAt(2).AddSensor(1);
             //End second floor
             //************************************************
 
             SaveEnvironmentService ses = new SaveEnvironmentService();
-            ses.SaveEnvironmentToFile(env, "Environment1.txt");
+            ses.SaveEnvironmentToFile(env, "env.txt");
+        }
+        private void btnTest1_Click(object sender, EventArgs e)
+        {
+            LoginPage form = new LoginPage("Env.txt");
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnTest2_Click(object sender, EventArgs e)
+        {
+            LoginPage form = new LoginPage("Env2.txt");
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnTest3_Click(object sender, EventArgs e)
+        {
+            LoginPage form = new LoginPage("Env3.txt");
+            form.Show();
+            this.Hide();
         }
     }
 }
