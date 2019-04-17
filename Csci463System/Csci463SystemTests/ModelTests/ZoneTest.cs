@@ -87,5 +87,39 @@ namespace Csci463SystemTests
             Assert.AreEqual(zone.LockedDown, false);
             Assert.AreEqual(zone.ElevatorActive, true);
         }
+        [TestMethod]
+        public void CheckSensorTest()
+        {
+            Zone z = new Zone(0,"Building");
+            z.AddInnerZone(1);
+            z.AddInnerZone(2);
+            z.AddInnerZone(3);
+            Assert.IsNotNull(z.zones[0]);
+            Assert.IsNotNull(z.zones[1]);
+            Assert.IsNotNull(z.zones[2]);
+            z.zones[0].AddSensor(0);
+            z.zones[0].AddSensor(1);
+            z.zones[0].AddSensor(2);
+            z.zones[1].AddSensor(0);
+            z.zones[1].AddSensor(1);
+            z.zones[1].AddSensor(2);
+            z.zones[2].AddSensor(0);
+            z.zones[2].AddSensor(1);
+            z.zones[2].AddSensor(2);
+            Assert.IsFalse(z.zones[0].DSensors[0].Activated);
+            z.zones[0].DSensors[0].Activate();
+            z.zones[1].FSensors[0].Activate();
+            z.zones[2].LSensors[0].Activate();
+
+            Assert.IsTrue(z.zones[0].DSensors[0].Activated);
+            Assert.IsTrue(z.zones[1].FSensors[0].Activated);
+            Assert.IsTrue(z.zones[2].LSensors[0].Activated);
+            List<Alarm> a = new List<Alarm>(z.CheckSensors().Item2);
+            List<ISensor> s = new List<ISensor>(z.CheckSensors().Item1);
+
+            Assert.AreEqual(3, s.Count);
+            Assert.AreEqual(3, a.Count);
+            Assert.AreEqual(a[0].Message, "Fire Sensor Activated");
+        }
     }
 }

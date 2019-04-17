@@ -154,5 +154,43 @@ namespace Csci463System.Models
         {
             ElevatorActive = false;
         }
+
+        public Tuple<List<ISensor>,List<Alarm>> CheckSensors()
+        {
+            List<ISensor> sensors = new List<ISensor>();
+            List<ISensor> sensorsIn = new List<ISensor>();
+            List<Alarm> alarms = new List<Alarm>();
+            List<Alarm> alarmsIn = new List<Alarm>();
+            foreach(Zone z in zones)
+            {
+                sensorsIn = new List<ISensor>(z.GetAllSensors());
+                foreach(ISensor s in sensorsIn)
+                {
+                    if (s.GetActive())
+                    {
+                        sensors.Add(s);
+                        alarms.Add(s.GetAlarm());
+                    }
+                }
+            }
+            return Tuple.Create(sensors,alarms);
+        }
+        public List<ISensor> GetAllSensors()
+        {
+            List<ISensor> sensors = new List<ISensor>();
+            foreach (DoorSensor d in DSensors)
+            {
+                sensors.Add(d);
+            }
+            foreach (FireSensor f in FSensors)
+            {
+                sensors.Add(f);
+            }
+            foreach (LightSensor l in LSensors)
+            {
+                sensors.Add(l);
+            }
+            return sensors;
+        }
     }
 }
