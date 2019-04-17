@@ -111,9 +111,9 @@ namespace Csci463SystemTests.ModelTests
             Alarm fsA = fs.triggerSensor();
             Alarm dsA = ds.triggerSensor();
 
-            ls.SupressSensor();
-            fs.SupressSensor();
-            ds.SupressSensor();
+            ls.Deactivate();
+            fs.Deactivate();
+            ds.Deactivate();
 
             bool lsStatus = ls.checkStatus();
             bool fsStatus = fs.checkStatus();

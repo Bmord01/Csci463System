@@ -14,6 +14,7 @@ namespace Csci463System.Models
         public int UID;
         public Alarm alarm;
 
+
         public DoorSensor()
         {
             UID = uid++;
@@ -54,6 +55,16 @@ namespace Csci463System.Models
         {
             alarm = null;
             Activated = false;
+        }
+
+        public bool GetActive()
+        {
+            return Activated;
+        }
+
+        public Alarm GetAlarm()
+        {
+            return alarm;
         }
     }
 }

@@ -59,5 +59,15 @@ namespace Csci463System.Models
             alarm = null;
             Activated = false;
         }
+
+        public bool GetActive()
+        {
+            return Activated;
+        }
+
+        public Alarm GetAlarm()
+        {
+            return alarm;
+        }
     }
 }

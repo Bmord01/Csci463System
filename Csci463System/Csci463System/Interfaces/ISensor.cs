@@ -15,5 +15,7 @@ namespace Csci463System.Interfaces
         int getSensorUID();
         void Activate();
         void Deactivate();
+        bool GetActive();
+        Alarm GetAlarm();
     }
 }
