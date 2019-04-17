@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Csci463System.Interfaces;
+using Csci463System.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +17,10 @@ namespace Csci463System
         private TreeView treeView1;
         private Button showCheckedNodesButton;
         private TreeViewCancelEventHandler checkForCheckedChildren;
-        public MainPage()
+        public EnvironmentC env;
+        public MainPage(EnvironmentC inEnv)
         {
+            env = inEnv;
             InitializeComponent();
         }
 
@@ -25,60 +29,91 @@ namespace Csci463System
 
         }
 
+        private void AddKeypadNodToTree(List<Keypad> inK,TreeNode inNode)
+        {
+            foreach(Keypad k in inK)
+            {
+                inNode.Nodes.Add("Keypad " + k.UID);
+            }
+        }
+
+        private void AddSensorNodeToTree(List<ISensor> inIS,TreeNode inNode)
+        {
+            foreach(ISensor s in inIS)
+            {
+                inNode.Nodes.Add((s.GetSensorType() + s.getSensorUID().ToString()));
+            }
+        }
+
+        private void AddZoneNodeToTree(List<Zone> inZ,TreeNode inNode)
+        {
+            int i = 0;
+            foreach(Zone z in inZ)
+            {
+                inNode.Nodes.Add(z.ZoneName);
+                AddZoneNodeToTree(z.zones, inNode.Nodes[i]);
+                AddSensorNodeToTree(z.GetAllSensors(),inNode.Nodes[i]);
+                AddKeypadNodToTree(z.keypads, inNode.Nodes[i]);
+                i++;
+            }
+        }
+
         private void MainPage_Load(object sender, EventArgs e)
         {
+            treeView.Nodes.Add(env.building.ZoneName);
+            AddZoneNodeToTree(env.building.zones,treeView.Nodes[0]);
             // Initializing Tree to view all the building systems.
-            treeView.Nodes.Add("Floor 1");
-            treeView.Nodes.Add("Floor 2");
+            //treeView.Nodes.Add("Floor 1");
+            //treeView.Nodes.Add("Floor 2");
 
-            // -------------------------------------
+            //// -------------------------------------
 
-            treeView.Nodes[0].Nodes.Add("Room 1");
-            treeView.Nodes[0].Nodes.Add("Room 2");
-            treeView.Nodes[0].Nodes.Add("Room 3");
-            treeView.Nodes[0].Nodes.Add("Room 4");
+            //treeView.Nodes[0].Nodes.Add("Room 1");
+            //treeView.Nodes[0].Nodes.Add("Room 2");
+            //treeView.Nodes[0].Nodes.Add("Room 3");
+            //treeView.Nodes[0].Nodes.Add("Room 4");
 
-            treeView.Nodes[1].Nodes.Add("Room 1");
-            treeView.Nodes[1].Nodes.Add("Room 2");
-            treeView.Nodes[1].Nodes.Add("Room 3");
-            treeView.Nodes[1].Nodes.Add("Room 4");
+            //treeView.Nodes[1].Nodes.Add("Room 1");
+            //treeView.Nodes[1].Nodes.Add("Room 2");
+            //treeView.Nodes[1].Nodes.Add("Room 3");
+            //treeView.Nodes[1].Nodes.Add("Room 4");
 
-            // -------------------------------------
+            //// -------------------------------------
 
-            treeView.Nodes[0].Nodes[0].Nodes.Add("Doors");
-            treeView.Nodes[0].Nodes[0].Nodes.Add("Sensors");
-            treeView.Nodes[0].Nodes[0].Nodes.Add("Cameras");
+            //treeView.Nodes[0].Nodes[0].Nodes.Add("Doors");
+            //treeView.Nodes[0].Nodes[0].Nodes.Add("Sensors");
+            //treeView.Nodes[0].Nodes[0].Nodes.Add("Cameras");
 
-            treeView.Nodes[0].Nodes[1].Nodes.Add("Doors");
-            treeView.Nodes[0].Nodes[1].Nodes.Add("Sensors");
-            treeView.Nodes[0].Nodes[1].Nodes.Add("Cameras");
+            //treeView.Nodes[0].Nodes[1].Nodes.Add("Doors");
+            //treeView.Nodes[0].Nodes[1].Nodes.Add("Sensors");
+            //treeView.Nodes[0].Nodes[1].Nodes.Add("Cameras");
 
-            treeView.Nodes[0].Nodes[2].Nodes.Add("Doors");
-            treeView.Nodes[0].Nodes[2].Nodes.Add("Sensors");
-            treeView.Nodes[0].Nodes[2].Nodes.Add("Cameras");
+            //treeView.Nodes[0].Nodes[2].Nodes.Add("Doors");
+            //treeView.Nodes[0].Nodes[2].Nodes.Add("Sensors");
+            //treeView.Nodes[0].Nodes[2].Nodes.Add("Cameras");
 
-            treeView.Nodes[0].Nodes[3].Nodes.Add("Doors");
-            treeView.Nodes[0].Nodes[3].Nodes.Add("Sensors");
-            treeView.Nodes[0].Nodes[3].Nodes.Add("Cameras");
+            //treeView.Nodes[0].Nodes[3].Nodes.Add("Doors");
+            //treeView.Nodes[0].Nodes[3].Nodes.Add("Sensors");
+            //treeView.Nodes[0].Nodes[3].Nodes.Add("Cameras");
 
 
-            // -------------------------------------
+            //// -------------------------------------
 
-            treeView.Nodes[1].Nodes[0].Nodes.Add("Doors");
-            treeView.Nodes[1].Nodes[0].Nodes.Add("Sensors");
-            treeView.Nodes[1].Nodes[0].Nodes.Add("Cameras");
+            //treeView.Nodes[1].Nodes[0].Nodes.Add("Doors");
+            //treeView.Nodes[1].Nodes[0].Nodes.Add("Sensors");
+            //treeView.Nodes[1].Nodes[0].Nodes.Add("Cameras");
 
-            treeView.Nodes[1].Nodes[1].Nodes.Add("Doors");
-            treeView.Nodes[1].Nodes[1].Nodes.Add("Sensors");
-            treeView.Nodes[1].Nodes[1].Nodes.Add("Cameras");
+            //treeView.Nodes[1].Nodes[1].Nodes.Add("Doors");
+            //treeView.Nodes[1].Nodes[1].Nodes.Add("Sensors");
+            //treeView.Nodes[1].Nodes[1].Nodes.Add("Cameras");
 
-            treeView.Nodes[1].Nodes[2].Nodes.Add("Doors");
-            treeView.Nodes[1].Nodes[2].Nodes.Add("Sensors");
-            treeView.Nodes[1].Nodes[2].Nodes.Add("Cameras");
+            //treeView.Nodes[1].Nodes[2].Nodes.Add("Doors");
+            //treeView.Nodes[1].Nodes[2].Nodes.Add("Sensors");
+            //treeView.Nodes[1].Nodes[2].Nodes.Add("Cameras");
 
-            treeView.Nodes[1].Nodes[3].Nodes.Add("Doors");
-            treeView.Nodes[1].Nodes[3].Nodes.Add("Sensors");
-            treeView.Nodes[1].Nodes[3].Nodes.Add("Cameras");
+            //treeView.Nodes[1].Nodes[3].Nodes.Add("Doors");
+            //treeView.Nodes[1].Nodes[3].Nodes.Add("Sensors");
+            //treeView.Nodes[1].Nodes[3].Nodes.Add("Cameras");
 
 
         }

@@ -116,10 +116,12 @@ namespace Csci463SystemTests
             Assert.IsTrue(z.zones[2].LSensors[0].Activated);
             List<Alarm> a = new List<Alarm>(z.CheckSensors().Item2);
             List<ISensor> s = new List<ISensor>(z.CheckSensors().Item1);
-
+            List<int> u = new List<int>(z.CheckSensors().Item3);
             Assert.AreEqual(3, s.Count);
             Assert.AreEqual(3, a.Count);
             Assert.AreEqual(a[0].Message, "Fire Sensor Activated");
+            Assert.AreEqual(s[0].GetAlarm(), a[0]);
+            Assert.AreEqual(s[0].getSensorUID(), u[0]);
         }
     }
 }

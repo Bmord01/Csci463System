@@ -26,7 +26,7 @@ namespace Csci463System.Models
         public bool LockedDown;
         public string ZoneName;
         public static int uid = 1;
-        public int UID;
+        public int UID { get; set; }
         public bool ElevatorActive = false;
         public List<FireSensor> FSensors;
         public List<LightSensor> LSensors;
@@ -79,10 +79,6 @@ namespace Csci463System.Models
         
         public void AddSensor(int type)
         {
-            if (zoneType == ZoneType.Elevator)
-            {
-                return;
-            }
             switch (type)
             {
                 case 0:
@@ -106,7 +102,7 @@ namespace Csci463System.Models
             {
                 return;
             }
-            zones.Add(new Zone(type,"zone1"));
+            zones.Add(new Zone(type,("zone "+UID.ToString())));
         }
         public void AddKeypad()
         {
@@ -155,12 +151,12 @@ namespace Csci463System.Models
             ElevatorActive = false;
         }
 
-        public Tuple<List<ISensor>,List<Alarm>> CheckSensors()
+        public Tuple<List<ISensor>,List<Alarm>,List<int>> CheckSensors()
         {
             List<ISensor> sensors = new List<ISensor>();
             List<ISensor> sensorsIn = new List<ISensor>();
             List<Alarm> alarms = new List<Alarm>();
-            List<Alarm> alarmsIn = new List<Alarm>();
+            List<int> uids = new List<int>();
             foreach(Zone z in zones)
             {
                 sensorsIn = new List<ISensor>(z.GetAllSensors());
@@ -170,10 +166,11 @@ namespace Csci463System.Models
                     {
                         sensors.Add(s);
                         alarms.Add(s.GetAlarm());
+                        uids.Add(s.getSensorUID());
                     }
                 }
             }
-            return Tuple.Create(sensors,alarms);
+            return Tuple.Create(sensors,alarms,uids);
         }
         public List<ISensor> GetAllSensors()
         {
