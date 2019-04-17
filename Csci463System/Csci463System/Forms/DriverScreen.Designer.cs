@@ -33,6 +33,9 @@
             this.environment1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.environment2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.environment3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTest1 = new System.Windows.Forms.Button();
+            this.btnTest2 = new System.Windows.Forms.Button();
+            this.btnTest3 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +46,8 @@
             this.environmentsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(186, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -55,39 +59,73 @@
             this.environment2ToolStripMenuItem,
             this.environment3ToolStripMenuItem});
             this.environmentsToolStripMenuItem.Name = "environmentsToolStripMenuItem";
-            this.environmentsToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
+            this.environmentsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.environmentsToolStripMenuItem.Text = "Environments";
             // 
             // environment1ToolStripMenuItem
             // 
             this.environment1ToolStripMenuItem.Name = "environment1ToolStripMenuItem";
-            this.environment1ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.environment1ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.environment1ToolStripMenuItem.Text = "Environment1";
             this.environment1ToolStripMenuItem.Click += new System.EventHandler(this.environment1ToolStripMenuItem_Click);
             // 
             // environment2ToolStripMenuItem
             // 
             this.environment2ToolStripMenuItem.Name = "environment2ToolStripMenuItem";
-            this.environment2ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.environment2ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.environment2ToolStripMenuItem.Text = "Environment2";
             this.environment2ToolStripMenuItem.Click += new System.EventHandler(this.environment2ToolStripMenuItem_Click);
             // 
             // environment3ToolStripMenuItem
             // 
             this.environment3ToolStripMenuItem.Name = "environment3ToolStripMenuItem";
-            this.environment3ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.environment3ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.environment3ToolStripMenuItem.Text = "Environment3";
             this.environment3ToolStripMenuItem.Click += new System.EventHandler(this.environment3ToolStripMenuItem_Click);
             // 
+            // btnTest1
+            // 
+            this.btnTest1.Location = new System.Drawing.Point(57, 77);
+            this.btnTest1.Name = "btnTest1";
+            this.btnTest1.Size = new System.Drawing.Size(75, 23);
+            this.btnTest1.TabIndex = 1;
+            this.btnTest1.Text = "Test 1";
+            this.btnTest1.UseVisualStyleBackColor = true;
+            this.btnTest1.Click += new System.EventHandler(this.btnTest1_Click);
+            // 
+            // btnTest2
+            // 
+            this.btnTest2.Location = new System.Drawing.Point(57, 127);
+            this.btnTest2.Name = "btnTest2";
+            this.btnTest2.Size = new System.Drawing.Size(75, 23);
+            this.btnTest2.TabIndex = 2;
+            this.btnTest2.Text = "Test 2";
+            this.btnTest2.UseVisualStyleBackColor = true;
+            this.btnTest2.Click += new System.EventHandler(this.btnTest2_Click);
+            // 
+            // btnTest3
+            // 
+            this.btnTest3.Location = new System.Drawing.Point(57, 181);
+            this.btnTest3.Name = "btnTest3";
+            this.btnTest3.Size = new System.Drawing.Size(75, 23);
+            this.btnTest3.TabIndex = 3;
+            this.btnTest3.Text = "Test 3";
+            this.btnTest3.UseVisualStyleBackColor = true;
+            this.btnTest3.Click += new System.EventHandler(this.btnTest3_Click);
+            // 
             // DriverScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(186, 366);
+            this.Controls.Add(this.btnTest3);
+            this.Controls.Add(this.btnTest2);
+            this.Controls.Add(this.btnTest1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DriverScreen";
-            this.Text = "Form1";
+            this.Text = "Driver Form";
             this.Load += new System.EventHandler(this.DriverScreen_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -103,5 +141,8 @@
         private System.Windows.Forms.ToolStripMenuItem environment1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem environment2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem environment3ToolStripMenuItem;
+        private System.Windows.Forms.Button btnTest1;
+        private System.Windows.Forms.Button btnTest2;
+        private System.Windows.Forms.Button btnTest3;
     }
 }
