@@ -29,14 +29,14 @@ namespace Csci463System.Forms
 
         private void environment2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoginPage form = new LoginPage("Environment2");
+            LoginPage form = new LoginPage("Env2.txt");
             form.Show();
             this.Hide();
         }
 
         private void environment3ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoginPage form = new LoginPage("Environment3");
+            LoginPage form = new LoginPage("Env3.txt");
             form.Show();
             this.Hide();
         }
@@ -321,7 +321,13 @@ namespace Csci463System.Forms
             //************************************************
 
             SaveEnvironmentService ses = new SaveEnvironmentService();
-            ses.SaveEnvironmentToFile(env, "env.txt");
+            ses.SaveEnvironmentToFile(env, "Env.txt");
+            env.building.zones[0].zones[0].zones[0].FSensors[0].Activate();
+            env.building.zones[0].zones[0].zones[1].LSensors[0].Activate();
+            env.building.zones[0].zones[1].DSensors[0].Activate();
+            ses.SaveEnvironmentToFile(env, "Env2.txt");
+
+            ses.SaveEnvironmentToFile(env, "Env3.txt");
         }
         private void btnTest1_Click(object sender, EventArgs e)
         {
