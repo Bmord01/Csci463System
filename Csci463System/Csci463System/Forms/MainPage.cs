@@ -152,9 +152,11 @@ namespace Csci463System
             try
             {
                 string[] name = tn.Text.Split(' ');
+                string[] issue;
                 for (int i = 0; i < issueS.Count; i++)
                 {
-                    if (issueS[i].getSensorUID() == Int32.Parse(name[2]))
+                    issue = issueA[i].Message.Split(' ');
+                    if (tn.ForeColor==Color.Red && issue[0]==name[0])
                     {
                         MessageBox.Show(issueA[i].Message);
                     }
