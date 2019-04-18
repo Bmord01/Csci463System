@@ -21,7 +21,6 @@ namespace Csci463System.Forms
             inEnv = Env;
             JsonService js = new JsonService();
             LoadEnvironmentService les = new LoadEnvironmentService();
-            env = new EnvironmentC();
             string json = les.LoadEnvironmentOjbect(inEnv);
             env = js.Deserialize<EnvironmentC>(json);
             InitializeComponent();

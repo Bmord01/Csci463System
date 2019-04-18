@@ -39,7 +39,7 @@ namespace Csci463System.Models
         public Alarm triggerSensor()
         {
             Alarm a = new Alarm {
-                Message = "Fire Sensor Activated",
+                Message = "Door Sensor Activated",
                 Severity = (Alarm.AlarmType.Security),
             };
             return a;

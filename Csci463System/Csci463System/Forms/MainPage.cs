@@ -18,6 +18,8 @@ namespace Csci463System
         private Button showCheckedNodesButton;
         private TreeViewCancelEventHandler checkForCheckedChildren;
         public EnvironmentC env;
+        public List<ISensor> issueS;
+        public List<Alarm> issueA;
         public MainPage(EnvironmentC inEnv)
         {
             env = inEnv;
@@ -36,12 +38,17 @@ namespace Csci463System
                 inNode.Nodes.Add("Keypad " + k.UID);
             }
         }
-
         private void AddSensorNodeToTree(List<ISensor> inIS,TreeNode inNode)
         {
             foreach(ISensor s in inIS)
             {
-                inNode.Nodes.Add((s.GetSensorType() + s.getSensorUID().ToString()));
+                TreeNode newNode = new TreeNode((s.GetSensorType() + s.getSensorUID().ToString()));
+                if(s.GetActive())
+                {
+                    newNode.ForeColor = Color.Red;
+                    MessageBox.Show("Found issue with Sensor" +s.getSensorUID());
+                }
+                inNode.Nodes.Add(newNode);            
             }
         }
 
@@ -60,6 +67,8 @@ namespace Csci463System
 
         private void MainPage_Load(object sender, EventArgs e)
         {
+            issueS = new List<ISensor>(env.building.CheckSensors().Item1);
+            issueA = new List<Alarm>(env.building.CheckSensors().Item2);
             treeView.Nodes.Add(env.building.ZoneName);
             AddZoneNodeToTree(env.building.zones,treeView.Nodes[0]);
             // Initializing Tree to view all the building systems.
@@ -135,6 +144,27 @@ namespace Csci463System
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode tn = treeView.SelectedNode;
+            try
+            {
+                string[] name = tn.Text.Split(' ');
+                for (int i = 0; i < issueS.Count; i++)
+                {
+                    if (issueS[i].getSensorUID() == Int32.Parse(name[2]))
+                    {
+                        MessageBox.Show(issueA[i].Message);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return;
         }
     }
 }
