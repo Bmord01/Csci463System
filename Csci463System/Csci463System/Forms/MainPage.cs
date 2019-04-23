@@ -48,7 +48,9 @@ namespace Csci463System
                     newNode.ForeColor = Color.Red;
                     //MessageBox.Show("Found issue with Sensor" +s.getSensorUID());
                 }
-                inNode.Nodes.Add(newNode);            
+                inNode.Nodes.Add(newNode);  
+                if(newNode.ForeColor ==Color.Red)
+                    newNode.Parent.ForeColor = Color.Red;
             }
         }
 
@@ -61,6 +63,13 @@ namespace Csci463System
                 AddZoneNodeToTree(z.zones, inNode.Nodes[i]);
                 AddSensorNodeToTree(z.GetAllSensors(),inNode.Nodes[i]);
                 AddKeypadNodToTree(z.keypads, inNode.Nodes[i]);
+                foreach(TreeNode n in inNode.Nodes)
+                {
+                    if(n.ForeColor == Color.Red)
+                    {
+                        inNode.ForeColor = Color.Red;
+                    }
+                }
                 i++;
             }
         }
@@ -163,6 +172,7 @@ namespace Csci463System
                         {
                             MessageBox.Show("Emergency services have been Alerted");
                             tn.ForeColor = Color.White;
+                            checkParentColor(tn.Parent);
                         }
                         else
                         {
@@ -170,6 +180,7 @@ namespace Csci463System
                             if (result2 == DialogResult.Yes)
                             {
                                 tn.ForeColor = Color.White;
+                                checkParentColor(tn.Parent);
                             }
                         }
                     }
@@ -180,6 +191,18 @@ namespace Csci463System
 
             }
             return;
+        }
+        private void checkParentColor(TreeNode inNode)
+        {
+            foreach(TreeNode n in inNode.Nodes)
+            {
+                if (n.ForeColor == Color.Red)
+                {
+                    return;
+                }
+                inNode.ForeColor = Color.White;
+            }
+            checkParentColor(inNode.Parent);
         }
     }
 }
