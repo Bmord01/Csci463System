@@ -46,7 +46,7 @@ namespace Csci463System
                 if(s.GetActive())
                 {
                     newNode.ForeColor = Color.Red;
-                    MessageBox.Show("Found issue with Sensor" +s.getSensorUID());
+                    //MessageBox.Show("Found issue with Sensor" +s.getSensorUID());
                 }
                 inNode.Nodes.Add(newNode);            
             }
@@ -158,7 +158,11 @@ namespace Csci463System
                     issue = issueA[i].Message.Split(' ');
                     if (tn.ForeColor==Color.Red && issue[0]==name[0])
                     {
-                        MessageBox.Show(issueA[i].Message);
+                        var result = MessageBox.Show(issueA[i].Message+", Alert Emergency Services?","Warning",MessageBoxButtons.YesNo);
+                        if(result == DialogResult.Yes)
+                        {
+                            MessageBox.Show("Emergency services have been Alerted");
+                        }
                     }
                 }
             }
