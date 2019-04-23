@@ -46,7 +46,7 @@ namespace Csci463System
                 if(s.GetActive())
                 {
                     newNode.ForeColor = Color.Red;
-                    MessageBox.Show("Found issue with Sensor" +s.getSensorUID());
+                    //MessageBox.Show("Found issue with Sensor" +s.getSensorUID());
                 }
                 inNode.Nodes.Add(newNode);            
             }
@@ -152,11 +152,26 @@ namespace Csci463System
             try
             {
                 string[] name = tn.Text.Split(' ');
+                string[] issue;
                 for (int i = 0; i < issueS.Count; i++)
                 {
-                    if (issueS[i].getSensorUID() == Int32.Parse(name[2]))
+                    issue = issueA[i].Message.Split(' ');
+                    if (tn.ForeColor==Color.Red && issue[0]==name[0])
                     {
-                        MessageBox.Show(issueA[i].Message);
+                        var result = MessageBox.Show(issueA[i].Message+", Alert Emergency Services?","Warning",MessageBoxButtons.YesNo);
+                        if(result == DialogResult.Yes)
+                        {
+                            MessageBox.Show("Emergency services have been Alerted");
+                            tn.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            var result2=MessageBox.Show("Disable Sensor?", "Warning", MessageBoxButtons.YesNo);
+                            if (result2 == DialogResult.Yes)
+                            {
+                                tn.ForeColor = Color.White;
+                            }
+                        }
                     }
                 }
             }
