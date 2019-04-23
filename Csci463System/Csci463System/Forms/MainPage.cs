@@ -162,6 +162,15 @@ namespace Csci463System
                         if(result == DialogResult.Yes)
                         {
                             MessageBox.Show("Emergency services have been Alerted");
+                            tn.ForeColor = Color.White;
+                        }
+                        else
+                        {
+                            var result2=MessageBox.Show("Disable Sensor?", "Warning", MessageBoxButtons.YesNo);
+                            if (result2 == DialogResult.Yes)
+                            {
+                                tn.ForeColor = Color.White;
+                            }
                         }
                     }
                 }
