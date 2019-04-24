@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace Csci463System
 {
@@ -229,7 +230,9 @@ namespace Csci463System
                 var result = MessageBox.Show("Are You Sure you Want to Add an Observer?","Add Observer",MessageBoxButtons.YesNo);
                 if(result == DialogResult.Yes)
                 {
-                    User newUser = new User("Observer1","1234");
+                    string Username = Interaction.InputBox("Add Observer", "Username: ", "");
+                    string Password = Interaction.InputBox("Add Observer", "Password: ", "");
+                    User newUser = new User(Username,Password);
                     env.users.Add(newUser);
                     SaveEnvironmentService ses = new SaveEnvironmentService();
                     ses.SaveEnvironmentToFile(env, envS);
@@ -238,7 +241,9 @@ namespace Csci463System
                 result = MessageBox.Show("Are You Sure you Want to Add an Supervisor?", "Add Supervisor", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    User newUser = new User("Supervisor1", "1234");
+                    string Username = Interaction.InputBox("Add Supervisor", "Username: ", "");
+                    string Password = Interaction.InputBox("Add Supervisor", "Password: ", "");
+                    User newUser = new User(Username, Password);
                     newUser.MakeSupervisor();
                     env.users.Add(newUser);
                     SaveEnvironmentService ses = new SaveEnvironmentService();
