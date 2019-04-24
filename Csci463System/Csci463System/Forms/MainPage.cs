@@ -1,5 +1,7 @@
-﻿using Csci463System.Interfaces;
+﻿using Csci463System.Forms;
+using Csci463System.Interfaces;
 using Csci463System.Models;
+using Csci463System.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,10 +22,18 @@ namespace Csci463System
         public EnvironmentC env;
         public List<ISensor> issueS;
         public List<Alarm> issueA;
-        public MainPage(EnvironmentC inEnv)
+        public User CurrentUser;
+        public string envS;
+        public MainPage(EnvironmentC inEnv,User CurrentUser,string inEnvS)
         {
             env = inEnv;
+            this.CurrentUser = CurrentUser;
+            envS = inEnvS;
             InitializeComponent();
+            if (this.CurrentUser.userPermissions.canAddObserver)
+            {
+                this.button1.Visible = true;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,8 +59,10 @@ namespace Csci463System
                     //MessageBox.Show("Found issue with Sensor" +s.getSensorUID());
                 }
                 inNode.Nodes.Add(newNode);  
-                if(newNode.ForeColor ==Color.Red)
+                if(newNode.ForeColor == Color.Red)
+                {
                     newNode.Parent.ForeColor = Color.Red;
+                }   
             }
         }
 
@@ -152,7 +164,12 @@ namespace Csci463System
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            SaveEnvironmentService ses = new SaveEnvironmentService();
+            ses.SaveEnvironmentToFile(env, envS);
+            LoginPage lg = new LoginPage(envS);
+            lg.Show();
+            this.Close();
+            
         }
 
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
@@ -203,6 +220,32 @@ namespace Csci463System
                 inNode.ForeColor = Color.White;
             }
             checkParentColor(inNode.Parent);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (CurrentUser.userPermissions.canAddObserver)
+            {
+                var result = MessageBox.Show("Are You Sure you Want to Add an Observer?","Add Observer",MessageBoxButtons.YesNo);
+                if(result == DialogResult.Yes)
+                {
+                    User newUser = new User("Observer1","1234");
+                    env.users.Add(newUser);
+                    SaveEnvironmentService ses = new SaveEnvironmentService();
+                    ses.SaveEnvironmentToFile(env, envS);
+                    return;
+                }
+                result = MessageBox.Show("Are You Sure you Want to Add an Supervisor?", "Add Supervisor", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    User newUser = new User("Supervisor1", "1234");
+                    newUser.MakeSupervisor();
+                    env.users.Add(newUser);
+                    SaveEnvironmentService ses = new SaveEnvironmentService();
+                    ses.SaveEnvironmentToFile(env, envS);
+                    return;
+                }
+            }
         }
     }
 }

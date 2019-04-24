@@ -54,7 +54,7 @@ namespace Csci463System.Models
         {
             Alarm a = new Alarm
             {
-                Message = "Light Sensor Activated",
+                Message = "Emergency Lights Activated",
                 Severity = (Alarm.AlarmType.Light)
             };
             return a;

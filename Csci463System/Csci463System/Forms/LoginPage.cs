@@ -41,7 +41,7 @@ namespace Csci463System.Forms
                 {
                     if (u.Password == txtPassword.Text)
                     {
-                        MainPage form = new MainPage(env);
+                        MainPage form = new MainPage(env,u,inEnv);
                         form.Show();
                         this.Hide();
                         return;
