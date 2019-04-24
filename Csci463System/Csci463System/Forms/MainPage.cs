@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Csci463System.Interfaces;
+using Csci463System.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,8 +17,12 @@ namespace Csci463System
         private TreeView treeView1;
         private Button showCheckedNodesButton;
         private TreeViewCancelEventHandler checkForCheckedChildren;
-        public MainPage()
+        public EnvironmentC env;
+        public List<ISensor> issueS;
+        public List<Alarm> issueA;
+        public MainPage(EnvironmentC inEnv)
         {
+            env = inEnv;
             InitializeComponent();
         }
 
@@ -25,60 +31,107 @@ namespace Csci463System
 
         }
 
+        private void AddKeypadNodToTree(List<Keypad> inK,TreeNode inNode)
+        {
+            foreach(Keypad k in inK)
+            {
+                inNode.Nodes.Add("Keypad " + k.UID);
+            }
+        }
+        private void AddSensorNodeToTree(List<ISensor> inIS,TreeNode inNode)
+        {
+            foreach(ISensor s in inIS)
+            {
+                TreeNode newNode = new TreeNode((s.GetSensorType() + s.getSensorUID().ToString()));
+                if(s.GetActive())
+                {
+                    newNode.ForeColor = Color.Red;
+                    //MessageBox.Show("Found issue with Sensor" +s.getSensorUID());
+                }
+                inNode.Nodes.Add(newNode);  
+                if(newNode.ForeColor ==Color.Red)
+                    newNode.Parent.ForeColor = Color.Red;
+            }
+        }
+
+        private void AddZoneNodeToTree(List<Zone> inZ,TreeNode inNode)
+        {
+            int i = 0;
+            foreach(Zone z in inZ)
+            {
+                inNode.Nodes.Add(z.ZoneName);
+                AddZoneNodeToTree(z.zones, inNode.Nodes[i]);
+                AddSensorNodeToTree(z.GetAllSensors(),inNode.Nodes[i]);
+                AddKeypadNodToTree(z.keypads, inNode.Nodes[i]);
+                foreach(TreeNode n in inNode.Nodes)
+                {
+                    if(n.ForeColor == Color.Red)
+                    {
+                        inNode.ForeColor = Color.Red;
+                    }
+                }
+                i++;
+            }
+        }
+
         private void MainPage_Load(object sender, EventArgs e)
         {
+            issueS = new List<ISensor>(env.building.CheckSensors().Item1);
+            issueA = new List<Alarm>(env.building.CheckSensors().Item2);
+            treeView.Nodes.Add(env.building.ZoneName);
+            AddZoneNodeToTree(env.building.zones,treeView.Nodes[0]);
             // Initializing Tree to view all the building systems.
-            treeView.Nodes.Add("Floor 1");
-            treeView.Nodes.Add("Floor 2");
+            //treeView.Nodes.Add("Floor 1");
+            //treeView.Nodes.Add("Floor 2");
 
-            // -------------------------------------
+            //// -------------------------------------
 
-            treeView.Nodes[0].Nodes.Add("Room 1");
-            treeView.Nodes[0].Nodes.Add("Room 2");
-            treeView.Nodes[0].Nodes.Add("Room 3");
-            treeView.Nodes[0].Nodes.Add("Room 4");
+            //treeView.Nodes[0].Nodes.Add("Room 1");
+            //treeView.Nodes[0].Nodes.Add("Room 2");
+            //treeView.Nodes[0].Nodes.Add("Room 3");
+            //treeView.Nodes[0].Nodes.Add("Room 4");
 
-            treeView.Nodes[1].Nodes.Add("Room 1");
-            treeView.Nodes[1].Nodes.Add("Room 2");
-            treeView.Nodes[1].Nodes.Add("Room 3");
-            treeView.Nodes[1].Nodes.Add("Room 4");
+            //treeView.Nodes[1].Nodes.Add("Room 1");
+            //treeView.Nodes[1].Nodes.Add("Room 2");
+            //treeView.Nodes[1].Nodes.Add("Room 3");
+            //treeView.Nodes[1].Nodes.Add("Room 4");
 
-            // -------------------------------------
+            //// -------------------------------------
 
-            treeView.Nodes[0].Nodes[0].Nodes.Add("Doors");
-            treeView.Nodes[0].Nodes[0].Nodes.Add("Sensors");
-            treeView.Nodes[0].Nodes[0].Nodes.Add("Cameras");
+            //treeView.Nodes[0].Nodes[0].Nodes.Add("Doors");
+            //treeView.Nodes[0].Nodes[0].Nodes.Add("Sensors");
+            //treeView.Nodes[0].Nodes[0].Nodes.Add("Cameras");
 
-            treeView.Nodes[0].Nodes[1].Nodes.Add("Doors");
-            treeView.Nodes[0].Nodes[1].Nodes.Add("Sensors");
-            treeView.Nodes[0].Nodes[1].Nodes.Add("Cameras");
+            //treeView.Nodes[0].Nodes[1].Nodes.Add("Doors");
+            //treeView.Nodes[0].Nodes[1].Nodes.Add("Sensors");
+            //treeView.Nodes[0].Nodes[1].Nodes.Add("Cameras");
 
-            treeView.Nodes[0].Nodes[2].Nodes.Add("Doors");
-            treeView.Nodes[0].Nodes[2].Nodes.Add("Sensors");
-            treeView.Nodes[0].Nodes[2].Nodes.Add("Cameras");
+            //treeView.Nodes[0].Nodes[2].Nodes.Add("Doors");
+            //treeView.Nodes[0].Nodes[2].Nodes.Add("Sensors");
+            //treeView.Nodes[0].Nodes[2].Nodes.Add("Cameras");
 
-            treeView.Nodes[0].Nodes[3].Nodes.Add("Doors");
-            treeView.Nodes[0].Nodes[3].Nodes.Add("Sensors");
-            treeView.Nodes[0].Nodes[3].Nodes.Add("Cameras");
+            //treeView.Nodes[0].Nodes[3].Nodes.Add("Doors");
+            //treeView.Nodes[0].Nodes[3].Nodes.Add("Sensors");
+            //treeView.Nodes[0].Nodes[3].Nodes.Add("Cameras");
 
 
-            // -------------------------------------
+            //// -------------------------------------
 
-            treeView.Nodes[1].Nodes[0].Nodes.Add("Doors");
-            treeView.Nodes[1].Nodes[0].Nodes.Add("Sensors");
-            treeView.Nodes[1].Nodes[0].Nodes.Add("Cameras");
+            //treeView.Nodes[1].Nodes[0].Nodes.Add("Doors");
+            //treeView.Nodes[1].Nodes[0].Nodes.Add("Sensors");
+            //treeView.Nodes[1].Nodes[0].Nodes.Add("Cameras");
 
-            treeView.Nodes[1].Nodes[1].Nodes.Add("Doors");
-            treeView.Nodes[1].Nodes[1].Nodes.Add("Sensors");
-            treeView.Nodes[1].Nodes[1].Nodes.Add("Cameras");
+            //treeView.Nodes[1].Nodes[1].Nodes.Add("Doors");
+            //treeView.Nodes[1].Nodes[1].Nodes.Add("Sensors");
+            //treeView.Nodes[1].Nodes[1].Nodes.Add("Cameras");
 
-            treeView.Nodes[1].Nodes[2].Nodes.Add("Doors");
-            treeView.Nodes[1].Nodes[2].Nodes.Add("Sensors");
-            treeView.Nodes[1].Nodes[2].Nodes.Add("Cameras");
+            //treeView.Nodes[1].Nodes[2].Nodes.Add("Doors");
+            //treeView.Nodes[1].Nodes[2].Nodes.Add("Sensors");
+            //treeView.Nodes[1].Nodes[2].Nodes.Add("Cameras");
 
-            treeView.Nodes[1].Nodes[3].Nodes.Add("Doors");
-            treeView.Nodes[1].Nodes[3].Nodes.Add("Sensors");
-            treeView.Nodes[1].Nodes[3].Nodes.Add("Cameras");
+            //treeView.Nodes[1].Nodes[3].Nodes.Add("Doors");
+            //treeView.Nodes[1].Nodes[3].Nodes.Add("Sensors");
+            //treeView.Nodes[1].Nodes[3].Nodes.Add("Cameras");
 
 
         }
@@ -100,6 +153,56 @@ namespace Csci463System
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode tn = treeView.SelectedNode;
+            try
+            {
+                string[] name = tn.Text.Split(' ');
+                string[] issue;
+                for (int i = 0; i < issueS.Count; i++)
+                {
+                    issue = issueA[i].Message.Split(' ');
+                    if (tn.ForeColor==Color.Red && issue[0]==name[0])
+                    {
+                        var result = MessageBox.Show(issueA[i].Message+", Alert Emergency Services?","Warning",MessageBoxButtons.YesNo);
+                        if(result == DialogResult.Yes)
+                        {
+                            MessageBox.Show("Emergency services have been Alerted");
+                            tn.ForeColor = Color.White;
+                            checkParentColor(tn.Parent);
+                        }
+                        else
+                        {
+                            var result2=MessageBox.Show("Disable Sensor?", "Warning", MessageBoxButtons.YesNo);
+                            if (result2 == DialogResult.Yes)
+                            {
+                                tn.ForeColor = Color.White;
+                                checkParentColor(tn.Parent);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return;
+        }
+        private void checkParentColor(TreeNode inNode)
+        {
+            foreach(TreeNode n in inNode.Nodes)
+            {
+                if (n.ForeColor == Color.Red)
+                {
+                    return;
+                }
+                inNode.ForeColor = Color.White;
+            }
+            checkParentColor(inNode.Parent);
         }
     }
 }

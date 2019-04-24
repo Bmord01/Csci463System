@@ -42,7 +42,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.pictureBox1.BackgroundImage = global::Csci463System.Properties.Resources.Floor1;
-            this.pictureBox1.Image = global::Csci463System.Properties.Resources.Floor1;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Location = new System.Drawing.Point(333, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(852, 564);
@@ -103,12 +103,13 @@
             // 
             this.treeView.BackColor = System.Drawing.Color.DimGray;
             this.treeView.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView.ForeColor = System.Drawing.SystemColors.Info;
+            this.treeView.ForeColor = System.Drawing.Color.White;
             this.treeView.LineColor = System.Drawing.Color.White;
             this.treeView.Location = new System.Drawing.Point(12, 102);
             this.treeView.Name = "treeView";
             this.treeView.Size = new System.Drawing.Size(315, 462);
             this.treeView.TabIndex = 6;
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
             // exitButton
             // 
@@ -127,6 +128,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.treeView);
