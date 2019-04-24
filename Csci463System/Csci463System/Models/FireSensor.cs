@@ -73,5 +73,9 @@ namespace Csci463System.Models
         {
             return "Fire Sensor ";
         }
+        public void SetActive()
+        {
+            Activated = false;
+        }
     }
 }

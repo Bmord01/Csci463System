@@ -172,7 +172,7 @@ namespace Csci463System
             this.Close();
             
         }
-
+        
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode tn = treeView.SelectedNode;
@@ -183,13 +183,20 @@ namespace Csci463System
                 for (int i = 0; i < issueS.Count; i++)
                 {
                     issue = issueA[i].Message.Split(' ');
-                    if (tn.ForeColor==Color.Red && issue[0]==name[0])
+                    if (tn.ForeColor==Color.Red && (issue[0]==name[0] || issue[1]==name[0]))
                     {
                         var result = MessageBox.Show(issueA[i].Message+", Alert Emergency Services?","Warning",MessageBoxButtons.YesNo);
                         if(result == DialogResult.Yes)
                         {
                             MessageBox.Show("Emergency services have been Alerted");
                             tn.ForeColor = Color.White;
+                            foreach (ISensor s in issueS)
+                            {
+                                if (issue[0] == s.GetAlarm().Message.Split(' ')[0] || issue[1] == s.GetAlarm().Message.Split(' ')[0])
+                                {
+                                    s.SetActive();
+                                }
+                            }
                             checkParentColor(tn.Parent);
                         }
                         else
@@ -198,6 +205,13 @@ namespace Csci463System
                             if (result2 == DialogResult.Yes)
                             {
                                 tn.ForeColor = Color.White;
+                                foreach (ISensor s in issueS)
+                                {
+                                    if (issue[0] == s.GetAlarm().Message.Split(' ')[0] || issue[1] == s.GetAlarm().Message.Split(' ')[0])
+                                    {
+                                        s.SetActive();
+                                    }
+                                }
                                 checkParentColor(tn.Parent);
                             }
                         }
