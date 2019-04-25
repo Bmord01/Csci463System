@@ -37,7 +37,7 @@ namespace Csci463System.Models
         {
             Alarm a = new Alarm
             {
-                Message = "Fire Sensor Activated",
+                Message = "Fire Alarm Activated",
                 Severity = (Alarm.AlarmType)1
             };
             return a;
@@ -72,6 +72,10 @@ namespace Csci463System.Models
         public string GetSensorType()
         {
             return "Fire Sensor ";
+        }
+        public void SetActive()
+        {
+            Activated = false;
         }
     }
 }

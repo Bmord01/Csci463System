@@ -159,6 +159,16 @@ namespace Csci463System.Models
             List<int> uids = new List<int>();
             foreach(Zone z in zones)
             {
+                var returnedItem = z.CheckSensors();
+                foreach(ISensor s in returnedItem.Item1)
+                {
+                    sensors.Add(s);
+                }
+                foreach(Alarm a in returnedItem.Item2)
+                {
+                    alarms.Add(a);
+                }
+
                 sensorsIn = new List<ISensor>(z.GetAllSensors());
                 foreach(ISensor s in sensorsIn)
                 {
