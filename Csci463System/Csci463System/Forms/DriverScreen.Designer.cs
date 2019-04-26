@@ -64,58 +64,68 @@
             // environment1ToolStripMenuItem
             // 
             this.environment1ToolStripMenuItem.Name = "environment1ToolStripMenuItem";
-            this.environment1ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.environment1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.environment1ToolStripMenuItem.Text = "Environment1";
             this.environment1ToolStripMenuItem.Click += new System.EventHandler(this.environment1ToolStripMenuItem_Click);
             // 
             // environment2ToolStripMenuItem
             // 
             this.environment2ToolStripMenuItem.Name = "environment2ToolStripMenuItem";
-            this.environment2ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.environment2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.environment2ToolStripMenuItem.Text = "Environment2";
             this.environment2ToolStripMenuItem.Click += new System.EventHandler(this.environment2ToolStripMenuItem_Click);
             // 
             // environment3ToolStripMenuItem
             // 
             this.environment3ToolStripMenuItem.Name = "environment3ToolStripMenuItem";
-            this.environment3ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.environment3ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.environment3ToolStripMenuItem.Text = "Environment3";
             this.environment3ToolStripMenuItem.Click += new System.EventHandler(this.environment3ToolStripMenuItem_Click);
             // 
             // btnTest1
             // 
-            this.btnTest1.Location = new System.Drawing.Point(57, 77);
+            this.btnTest1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnTest1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTest1.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnTest1.Location = new System.Drawing.Point(50, 85);
             this.btnTest1.Name = "btnTest1";
-            this.btnTest1.Size = new System.Drawing.Size(75, 23);
+            this.btnTest1.Size = new System.Drawing.Size(86, 35);
             this.btnTest1.TabIndex = 1;
             this.btnTest1.Text = "Test 1";
-            this.btnTest1.UseVisualStyleBackColor = true;
+            this.btnTest1.UseVisualStyleBackColor = false;
             this.btnTest1.Click += new System.EventHandler(this.btnTest1_Click);
             // 
             // btnTest2
             // 
-            this.btnTest2.Location = new System.Drawing.Point(57, 158);
+            this.btnTest2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnTest2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTest2.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnTest2.Location = new System.Drawing.Point(50, 166);
             this.btnTest2.Name = "btnTest2";
-            this.btnTest2.Size = new System.Drawing.Size(75, 23);
+            this.btnTest2.Size = new System.Drawing.Size(86, 35);
             this.btnTest2.TabIndex = 2;
             this.btnTest2.Text = "Test 2";
-            this.btnTest2.UseVisualStyleBackColor = true;
+            this.btnTest2.UseVisualStyleBackColor = false;
             this.btnTest2.Click += new System.EventHandler(this.btnTest2_Click);
             // 
             // btnTest3
             // 
-            this.btnTest3.Location = new System.Drawing.Point(57, 239);
+            this.btnTest3.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnTest3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTest3.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnTest3.Location = new System.Drawing.Point(50, 247);
             this.btnTest3.Name = "btnTest3";
-            this.btnTest3.Size = new System.Drawing.Size(75, 23);
+            this.btnTest3.Size = new System.Drawing.Size(86, 35);
             this.btnTest3.TabIndex = 3;
             this.btnTest3.Text = "Test 3";
-            this.btnTest3.UseVisualStyleBackColor = true;
+            this.btnTest3.UseVisualStyleBackColor = false;
             this.btnTest3.Click += new System.EventHandler(this.btnTest3_Click);
             // 
             // DriverScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(186, 366);
             this.Controls.Add(this.btnTest3);
             this.Controls.Add(this.btnTest2);
@@ -124,6 +134,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DriverScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Driver Form";
             this.Load += new System.EventHandler(this.DriverScreen_Load);
             this.menuStrip1.ResumeLayout(false);
