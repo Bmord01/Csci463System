@@ -24,6 +24,7 @@ namespace Csci463System.Forms
             string json = les.LoadEnvironmentOjbect(inEnv);
             env = js.Deserialize<EnvironmentC>(json);
             InitializeComponent();
+            txtPassword.PasswordChar = '*';
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
