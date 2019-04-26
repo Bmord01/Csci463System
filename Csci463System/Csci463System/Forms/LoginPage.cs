@@ -41,7 +41,7 @@ namespace Csci463System.Forms
                 {
                     if (u.Password == txtPassword.Text)
                     {
-                        MainPage form = new MainPage(env);
+                        MainPage form = new MainPage(env,u,inEnv);
                         form.Show();
                         this.Hide();
                         return;
@@ -75,6 +75,13 @@ namespace Csci463System.Forms
         private void lblWelcomeMsg_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void testCasesButton_Click(object sender, EventArgs e)
+        {
+            DriverScreen form = new DriverScreen();
+            form.Show();
+            this.Hide();
         }
     }
 }

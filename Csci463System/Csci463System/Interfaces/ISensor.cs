@@ -18,5 +18,6 @@ namespace Csci463System.Interfaces
         bool GetActive();
         Alarm GetAlarm();
         string GetSensorType();
+        void SetActive();
     }
 }
