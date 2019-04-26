@@ -39,7 +39,7 @@ namespace Csci463System
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void AddKeypadNodToTree(List<Keypad> inK,TreeNode inNode)
@@ -51,12 +51,24 @@ namespace Csci463System
         }
         private void AddSensorNodeToTree(List<ISensor> inIS,TreeNode inNode)
         {
+            
             foreach(ISensor s in inIS)
             {
                 TreeNode newNode = new TreeNode((s.GetSensorType() + s.getSensorUID().ToString()));
                 if(s.GetActive())
                 {
+                    if (s.ToString().Contains("Fire")) {
+                        visualFireSensor29.Visible = true;
+                    }
+                    if (s.ToString().Contains("Light")) {
+                        visualLightSensor30.Visible = true;
+                    }
+                    if (s.ToString().Contains("Door"))
+                    {
+                        visualDoorSensor38.Visible = true;
+                    }
                     newNode.ForeColor = Color.Red;
+
                     //MessageBox.Show("Found issue with Sensor" +s.getSensorUID());
                 }
                 inNode.Nodes.Add(newNode);  
@@ -93,58 +105,6 @@ namespace Csci463System
             issueA = new List<Alarm>(env.building.CheckSensors().Item2);
             treeView.Nodes.Add(env.building.ZoneName);
             AddZoneNodeToTree(env.building.zones,treeView.Nodes[0]);
-            // Initializing Tree to view all the building systems.
-            //treeView.Nodes.Add("Floor 1");
-            //treeView.Nodes.Add("Floor 2");
-
-            //// -------------------------------------
-
-            //treeView.Nodes[0].Nodes.Add("Room 1");
-            //treeView.Nodes[0].Nodes.Add("Room 2");
-            //treeView.Nodes[0].Nodes.Add("Room 3");
-            //treeView.Nodes[0].Nodes.Add("Room 4");
-
-            //treeView.Nodes[1].Nodes.Add("Room 1");
-            //treeView.Nodes[1].Nodes.Add("Room 2");
-            //treeView.Nodes[1].Nodes.Add("Room 3");
-            //treeView.Nodes[1].Nodes.Add("Room 4");
-
-            //// -------------------------------------
-
-            //treeView.Nodes[0].Nodes[0].Nodes.Add("Doors");
-            //treeView.Nodes[0].Nodes[0].Nodes.Add("Sensors");
-            //treeView.Nodes[0].Nodes[0].Nodes.Add("Cameras");
-
-            //treeView.Nodes[0].Nodes[1].Nodes.Add("Doors");
-            //treeView.Nodes[0].Nodes[1].Nodes.Add("Sensors");
-            //treeView.Nodes[0].Nodes[1].Nodes.Add("Cameras");
-
-            //treeView.Nodes[0].Nodes[2].Nodes.Add("Doors");
-            //treeView.Nodes[0].Nodes[2].Nodes.Add("Sensors");
-            //treeView.Nodes[0].Nodes[2].Nodes.Add("Cameras");
-
-            //treeView.Nodes[0].Nodes[3].Nodes.Add("Doors");
-            //treeView.Nodes[0].Nodes[3].Nodes.Add("Sensors");
-            //treeView.Nodes[0].Nodes[3].Nodes.Add("Cameras");
-
-
-            //// -------------------------------------
-
-            //treeView.Nodes[1].Nodes[0].Nodes.Add("Doors");
-            //treeView.Nodes[1].Nodes[0].Nodes.Add("Sensors");
-            //treeView.Nodes[1].Nodes[0].Nodes.Add("Cameras");
-
-            //treeView.Nodes[1].Nodes[1].Nodes.Add("Doors");
-            //treeView.Nodes[1].Nodes[1].Nodes.Add("Sensors");
-            //treeView.Nodes[1].Nodes[1].Nodes.Add("Cameras");
-
-            //treeView.Nodes[1].Nodes[2].Nodes.Add("Doors");
-            //treeView.Nodes[1].Nodes[2].Nodes.Add("Sensors");
-            //treeView.Nodes[1].Nodes[2].Nodes.Add("Cameras");
-
-            //treeView.Nodes[1].Nodes[3].Nodes.Add("Doors");
-            //treeView.Nodes[1].Nodes[3].Nodes.Add("Sensors");
-            //treeView.Nodes[1].Nodes[3].Nodes.Add("Cameras");
 
 
         }
@@ -152,14 +112,22 @@ namespace Csci463System
         // These functions change the colors of the floor buttons to show which one you are currently on.
         private void floorButton1_Click(object sender, EventArgs e)
         {
+            visualFireSensor29.Visible = true;
+            visualLightSensor30.Visible = true;
+            visualDoorSensor38.Visible = true;
             floorButton1.BackColor = Color.MidnightBlue;
             floorButton2.BackColor = Color.DodgerBlue;
+            currentFloorLabel.Text = "Floor 1";
         }
 
         private void floorButton2_Click(object sender, EventArgs e)
         {
+            visualFireSensor29.Visible = false;
+            visualLightSensor30.Visible = false;
+            visualDoorSensor38.Visible = false;
             floorButton1.BackColor = Color.DodgerBlue;
             floorButton2.BackColor = Color.MidnightBlue;
+            currentFloorLabel.Text = "Floor 2";
         }
 
 
@@ -182,7 +150,9 @@ namespace Csci463System
                 string[] issue;
                 for (int i = 0; i < issueS.Count; i++)
                 {
+                    int noRepeats = 0;
                     issue = issueA[i].Message.Split(' ');
+
                     if (tn.ForeColor==Color.Red && (issue[0]==name[0] || issue[1]==name[0]))
                     {
                         var result = MessageBox.Show(issueA[i].Message+", Alert Emergency Services?","Warning",MessageBoxButtons.YesNo);
@@ -194,6 +164,18 @@ namespace Csci463System
                             {
                                 if (issue[0] == s.GetAlarm().Message.Split(' ')[0] || issue[1] == s.GetAlarm().Message.Split(' ')[0])
                                 {
+                                    if (s.ToString().Contains("Fire"))
+                                    {
+                                        visualFireSensor29.Visible = false;
+                                    }
+                                    if (s.ToString().Contains("Light"))
+                                    {
+                                        visualLightSensor30.Visible = false;
+                                    }
+                                    if (s.ToString().Contains("Door"))
+                                    {
+                                        visualDoorSensor38.Visible = false;
+                                    }
                                     s.SetActive();
                                 }
                             }
@@ -204,16 +186,38 @@ namespace Csci463System
                             var result2=MessageBox.Show("Disable Sensor?", "Warning", MessageBoxButtons.YesNo);
                             if (result2 == DialogResult.Yes)
                             {
-                                tn.ForeColor = Color.White;
+                                tn.ForeColor = Color.Goldenrod;
+                                noRepeats++;
                                 foreach (ISensor s in issueS)
                                 {
                                     if (issue[0] == s.GetAlarm().Message.Split(' ')[0] || issue[1] == s.GetAlarm().Message.Split(' ')[0])
                                     {
+                                        if (s.ToString().Contains("Fire"))
+                                        {
+                                            visualFireSensor29.Visible = false;
+                                        }
+                                        if (s.ToString().Contains("Light"))
+                                        {
+                                            visualLightSensor30.Visible = false;
+                                        }
+                                        if (s.ToString().Contains("Door"))
+                                        {
+                                            visualDoorSensor38.Visible = false;
+                                        }
                                         s.SetActive();
                                     }
                                 }
                                 checkParentColor(tn.Parent);
                             }
+                        }
+                    }
+                    if ((tn.ForeColor == Color.Goldenrod && (issue[0] == name[0] || issue[1] == name[0])) && noRepeats == 0)
+                    {
+                        var result = MessageBox.Show("Are you sure you want to reactivate?", "Warning", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            tn.ForeColor = Color.Red;
+                            tn.Parent.ForeColor = tn.Parent.Parent.ForeColor = tn.Parent.Parent.Parent.ForeColor = tn.Parent.Parent.Parent.Parent.ForeColor = Color.Red;
                         }
                     }
                 }
