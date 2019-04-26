@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.environmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.environment1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,12 +36,6 @@
             this.btnTest1 = new System.Windows.Forms.Button();
             this.btnTest2 = new System.Windows.Forms.Button();
             this.btnTest3 = new System.Windows.Forms.Button();
-            this.environment4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnTest4 = new System.Windows.Forms.Button();
-            this.tltpTest4 = new System.Windows.Forms.ToolTip(this.components);
-            this.tltpTest1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tltpTest2 = new System.Windows.Forms.ToolTip(this.components);
-            this.tltpTest3 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,8 +56,7 @@
             this.environmentsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.environment1ToolStripMenuItem,
             this.environment2ToolStripMenuItem,
-            this.environment3ToolStripMenuItem,
-            this.environment4ToolStripMenuItem});
+            this.environment3ToolStripMenuItem});
             this.environmentsToolStripMenuItem.Name = "environmentsToolStripMenuItem";
             this.environmentsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.environmentsToolStripMenuItem.Text = "Environments";
@@ -92,83 +84,49 @@
             // 
             // btnTest1
             // 
-            this.btnTest1.Location = new System.Drawing.Point(56, 68);
+            this.btnTest1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnTest1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTest1.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnTest1.Location = new System.Drawing.Point(50, 85);
             this.btnTest1.Name = "btnTest1";
-            this.btnTest1.Size = new System.Drawing.Size(75, 23);
+            this.btnTest1.Size = new System.Drawing.Size(86, 35);
             this.btnTest1.TabIndex = 1;
             this.btnTest1.Text = "Test 1";
-            this.btnTest1.UseVisualStyleBackColor = true;
+            this.btnTest1.UseVisualStyleBackColor = false;
             this.btnTest1.Click += new System.EventHandler(this.btnTest1_Click);
             // 
             // btnTest2
             // 
-            this.btnTest2.Location = new System.Drawing.Point(56, 97);
+            this.btnTest2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnTest2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTest2.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnTest2.Location = new System.Drawing.Point(50, 166);
             this.btnTest2.Name = "btnTest2";
-            this.btnTest2.Size = new System.Drawing.Size(75, 23);
+            this.btnTest2.Size = new System.Drawing.Size(86, 35);
             this.btnTest2.TabIndex = 2;
             this.btnTest2.Text = "Test 2";
-            this.btnTest2.UseVisualStyleBackColor = true;
+            this.btnTest2.UseVisualStyleBackColor = false;
             this.btnTest2.Click += new System.EventHandler(this.btnTest2_Click);
             // 
             // btnTest3
             // 
-            this.btnTest3.Location = new System.Drawing.Point(56, 126);
+            this.btnTest3.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnTest3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTest3.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnTest3.Location = new System.Drawing.Point(50, 247);
             this.btnTest3.Name = "btnTest3";
-            this.btnTest3.Size = new System.Drawing.Size(75, 23);
+            this.btnTest3.Size = new System.Drawing.Size(86, 35);
             this.btnTest3.TabIndex = 3;
             this.btnTest3.Text = "Test 3";
-            this.btnTest3.UseVisualStyleBackColor = true;
+            this.btnTest3.UseVisualStyleBackColor = false;
             this.btnTest3.Click += new System.EventHandler(this.btnTest3_Click);
-            // 
-            // environment4ToolStripMenuItem
-            // 
-            this.environment4ToolStripMenuItem.Name = "environment4ToolStripMenuItem";
-            this.environment4ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.environment4ToolStripMenuItem.Text = "Environment4";
-            this.environment4ToolStripMenuItem.Click += new System.EventHandler(this.environment4ToolStripMenuItem_Click);
-            // 
-            // btnTest4
-            // 
-            this.btnTest4.Location = new System.Drawing.Point(56, 155);
-            this.btnTest4.Name = "btnTest4";
-            this.btnTest4.Size = new System.Drawing.Size(75, 23);
-            this.btnTest4.TabIndex = 4;
-            this.btnTest4.Text = "Test 4";
-            this.btnTest4.UseVisualStyleBackColor = true;
-            this.btnTest4.Click += new System.EventHandler(this.btnTest4_Click);
-            // 
-            // tltpTest4
-            // 
-            this.tltpTest4.AutoPopDelay = 5000;
-            this.tltpTest4.InitialDelay = 200;
-            this.tltpTest4.ReshowDelay = 100;
-            this.tltpTest4.Popup += new System.Windows.Forms.PopupEventHandler(this.tltpTest4_Popup);
-            // 
-            // tltpTest1
-            // 
-            this.tltpTest1.AutoPopDelay = 5000;
-            this.tltpTest1.InitialDelay = 200;
-            this.tltpTest1.ReshowDelay = 100;
-            this.tltpTest1.Popup += new System.Windows.Forms.PopupEventHandler(this.tltpTest1_Popup);
-            // 
-            // tltpTest2
-            // 
-            this.tltpTest2.AutoPopDelay = 5000;
-            this.tltpTest2.InitialDelay = 200;
-            this.tltpTest2.ReshowDelay = 100;
-            // 
-            // tltpTest3
-            // 
-            this.tltpTest3.AutoPopDelay = 5000;
-            this.tltpTest3.InitialDelay = 200;
-            this.tltpTest3.ReshowDelay = 100;
             // 
             // DriverScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(186, 225);
-            this.Controls.Add(this.btnTest4);
+            this.BackColor = System.Drawing.Color.LightGray;
+            this.ClientSize = new System.Drawing.Size(186, 366);
             this.Controls.Add(this.btnTest3);
             this.Controls.Add(this.btnTest2);
             this.Controls.Add(this.btnTest1);
@@ -176,6 +134,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DriverScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Driver Form";
             this.Load += new System.EventHandler(this.DriverScreen_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -195,11 +154,5 @@
         private System.Windows.Forms.Button btnTest1;
         private System.Windows.Forms.Button btnTest2;
         private System.Windows.Forms.Button btnTest3;
-        private System.Windows.Forms.ToolStripMenuItem environment4ToolStripMenuItem;
-        private System.Windows.Forms.Button btnTest4;
-        private System.Windows.Forms.ToolTip tltpTest4;
-        private System.Windows.Forms.ToolTip tltpTest1;
-        private System.Windows.Forms.ToolTip tltpTest2;
-        private System.Windows.Forms.ToolTip tltpTest3;
     }
 }

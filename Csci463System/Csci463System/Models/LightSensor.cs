@@ -54,7 +54,7 @@ namespace Csci463System.Models
         {
             Alarm a = new Alarm
             {
-                Message = "Light Sensor Activated",
+                Message = "Emergency Light Activated",
                 Severity = (Alarm.AlarmType.Light)
             };
             return a;
@@ -67,6 +67,14 @@ namespace Csci463System.Models
         public Alarm GetAlarm()
         {
             return alarm;
+        }
+        public string GetSensorType()
+        {
+            return "Light Sensor ";
+        }
+        public void SetActive()
+        {
+            Activated = false;
         }
     }
 }

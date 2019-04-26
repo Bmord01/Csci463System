@@ -17,10 +17,5 @@ namespace Csci463System
             building = new Zone(0, BuildingName);
             users = new List<User>();
         }
-        public EnvironmentC()
-        {
-            building = new Zone();
-            users = new List<User>();
-        }
     }
 }

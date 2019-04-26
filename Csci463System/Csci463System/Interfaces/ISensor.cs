@@ -17,5 +17,7 @@ namespace Csci463System.Interfaces
         void Deactivate();
         bool GetActive();
         Alarm GetAlarm();
+        string GetSensorType();
+        void SetActive();
     }
 }

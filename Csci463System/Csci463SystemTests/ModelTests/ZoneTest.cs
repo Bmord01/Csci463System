@@ -94,9 +94,14 @@ namespace Csci463SystemTests
             z.AddInnerZone(1);
             z.AddInnerZone(2);
             z.AddInnerZone(3);
+            z.zones[0].AddInnerZone(1);
             Assert.IsNotNull(z.zones[0]);
             Assert.IsNotNull(z.zones[1]);
             Assert.IsNotNull(z.zones[2]);
+            Assert.IsNotNull(z.zones[0].zones[0]);
+            z.zones[0].zones[0].AddSensor(0);
+            z.zones[0].zones[0].AddSensor(1);
+            z.zones[0].zones[0].AddSensor(2);
             z.zones[0].AddSensor(0);
             z.zones[0].AddSensor(1);
             z.zones[0].AddSensor(2);
@@ -110,16 +115,37 @@ namespace Csci463SystemTests
             z.zones[0].DSensors[0].Activate();
             z.zones[1].FSensors[0].Activate();
             z.zones[2].LSensors[0].Activate();
+            z.zones[0].zones[0].DSensors[0].Activate();
 
             Assert.IsTrue(z.zones[0].DSensors[0].Activated);
             Assert.IsTrue(z.zones[1].FSensors[0].Activated);
             Assert.IsTrue(z.zones[2].LSensors[0].Activated);
+            Assert.IsTrue(z.zones[0].zones[0].DSensors[0].Activated);
+
+            z.zones[1].AddInnerZone(1);
+            z.zones[1].zones[0].AddSensor(0);
+            z.zones[1].zones[0].AddSensor(1);
+            z.zones[1].zones[0].AddSensor(2);
+            z.zones[1].zones[0].DSensors[0].Activate();
+
+            z.zones[1].zones[0].AddInnerZone(1);
+            z.zones[1].zones[0].zones[0].AddSensor(0);
+            z.zones[1].zones[0].zones[0].AddSensor(1);
+            z.zones[1].zones[0].zones[0].AddSensor(2);
+            z.zones[1].zones[0].zones[0].DSensors[0].Activate();
+
+            z.zones[1].zones[0].zones[0].AddInnerZone(1);
+            z.zones[1].zones[0].zones[0].zones[0].AddSensor(0);
+            z.zones[1].zones[0].zones[0].AddSensor(1);
+            z.zones[1].zones[0].zones[0].zones[0].AddSensor(2);
+            z.zones[1].zones[0].zones[0].zones[0].DSensors[0].Activate();
+
             List<Alarm> a = new List<Alarm>(z.CheckSensors().Item2);
             List<ISensor> s = new List<ISensor>(z.CheckSensors().Item1);
-
-            Assert.AreEqual(3, s.Count);
-            Assert.AreEqual(3, a.Count);
-            Assert.AreEqual(a[0].Message, "Fire Sensor Activated");
+            List<int> u = new List<int>(z.CheckSensors().Item3);
+            Assert.AreEqual(7, s.Count);
+            Assert.AreEqual(a[0].Message, "Door Sensor Activated");
+            Assert.AreEqual(s[4].GetAlarm(), a[4]);
         }
     }
 }
