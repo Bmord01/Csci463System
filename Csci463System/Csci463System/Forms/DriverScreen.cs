@@ -18,6 +18,10 @@ namespace Csci463System.Forms
         {
             InitializeComponent();
             createEnvironment();
+            tltpTest1.SetToolTip(btnTest1, "To login for Env1");
+            tltpTest2.SetToolTip(btnTest2, "To login for Env2");
+            tltpTest3.SetToolTip(btnTest3, "To login for Env3");
+            tltpTest4.SetToolTip(btnTest4, "Straight to Main Page");
         }
 
         private void environment1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -314,6 +318,30 @@ namespace Csci463System.Forms
             LoginPage form = new LoginPage("Env3.txt");
             form.Show();
             this.Hide();
+        }
+
+        private void environment4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainPage form = new MainPage();
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnTest4_Click(object sender, EventArgs e)
+        {
+            MainPage form = new MainPage();
+            form.Show();
+            this.Hide();
+        }
+
+        private void tltpTest4_Popup(object sender, PopupEventArgs e)
+        {
+            tltpTest4.GetToolTip(btnTest4);
+        }
+
+        private void tltpTest1_Popup(object sender, PopupEventArgs e)
+        {
+
         }
     }
 }
